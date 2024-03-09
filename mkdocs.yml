@@ -2,7 +2,7 @@ site_name: Muran's Notes
 site_url: http://note.muransama.top/
 repo_name: T-muran/Note
 repo_url: https://github.com/T-muran/Note
-edit_uri: tree/main/MuranNote/docs/
+edit_uri: blob/main/docs/
 
 copyright: >
   Copyright &copy; 2022-2024 T-muran. All rights reserved.<br>
@@ -12,7 +12,7 @@ copyright: >
 theme: 
   name: material
   language: zh
-  favicon: &site-icon assets/images/favicon.ico
+  favicon: &site-icon assets/images/favicon.png
   custom_dir: overrides
 
   icon:
@@ -100,6 +100,22 @@ markdown_extensions:
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
 
+extra:
+  social:
+    - name: GitHub
+      icon: fontawesome/brands/github
+      link: https://github.com/T-muran
+    - name: Telegram
+      icon: fontawesome/brands/telegram
+      link: 
+    - name: Mail
+      icon: fontawesome/solid/envelope
+      link: mailto:tangmuransama@gmail.com
+    - name: Blog RSS
+      icon: fontawesome/solid/square-rss
+      link: 
+  tags: { "": default }
+
 plugins:
   - glightbox:
       auto_caption: true
@@ -109,7 +125,7 @@ plugins:
         - zh
   - git-revision-date-localized:
       type: timeago
-      timezone: Asia/Shanghaia
+      timezone: Asia/Shanghai
       locale: zh
       enable_creation_date: true
       exclude:
@@ -175,3 +191,8 @@ nav:
     - blog/index.md
   - RSS 阅读:
     - news/index.md
+  - 基础学科: 
+    - 高等数学: basic/Advanced-Mathematics/placeholder.md
+  - 计算机:
+    - 数据结构与算法: 
+      - 学习资料: cs/algorithms/res.md
