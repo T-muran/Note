@@ -194,5 +194,12 @@ nav:
   - 基础学科: 
     - 高等数学: basic/Advanced-Mathematics/placeholder.md
   - 计算机:
+    - 编程语言: 
+      - C/C++: 
+        - STL 相关: cs/Language/C-CPP/STL.md
+      - C#: 
+        - 代码规范: cs/Language/CSharp/Coding-Conventions.md  
     - 数据结构与算法: 
-      - 学习资料: cs/algorithms/res.md
+      - 学习资料: cs/Algorithms/res.md
+      - 数据结构: 
+        - 并查集: cs/Algorithms/Data-Structure/Union-Find.md
