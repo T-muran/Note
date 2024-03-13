@@ -36,6 +36,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>http://note.muransama.top/cs/Algorithms/Data-Structure/test/</loc>
+         <lastmod>2024-03-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>http://note.muransama.top/cs/Language/C-CPP/STL/STL-base/</loc>
          <lastmod>2024-03-13</lastmod>
          <changefreq>daily</changefreq>
