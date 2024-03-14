@@ -36,6 +36,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>http://note.muransama.top/cs/Algorithms/Dynamic-Programming/Memorization-Search/</loc>
+         <lastmod>2024-03-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>http://note.muransama.top/cs/Algorithms/Search/DFS-Search/</loc>
          <lastmod>2024-03-14</lastmod>
          <changefreq>daily</changefreq>

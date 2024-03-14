@@ -204,5 +204,7 @@ nav:
       - 学习资料: cs/Algorithms/res.md
       - 搜索:
         - DFS-搜索: cs/Algorithms/Search/DFS-Search.md
+      - 动态规划:
+        - 记忆化搜索: cs/Algorithms/Dynamic-Programming/Memorization-Search.md
       - 数据结构: 
         - 并查集: cs/Algorithms/Data-Structure/Union-Find.md
