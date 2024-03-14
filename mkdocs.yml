@@ -202,5 +202,7 @@ nav:
         - 代码规范: cs/Language/CSharp/Coding-Convention.md  
     - 数据结构与算法: 
       - 学习资料: cs/Algorithms/res.md
+      - 搜索:
+        - DFS-搜索: cs/Algorithms/Search/DFS-Search.md
       - 数据结构: 
         - 并查集: cs/Algorithms/Data-Structure/Union-Find.md
