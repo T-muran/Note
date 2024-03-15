@@ -98,7 +98,7 @@ markdown_extensions:
       custom_fences:
         - name: mermaid
           class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
+          format: !!python/name:pymdownx.superfences.fence_code_format      
 
 extra:
   social:
@@ -169,8 +169,6 @@ plugins:
       categories:
         - categories
       image: *site-icon
-      
-
 
 extra_javascript:
   - assets/javascripts/mathjax.js
@@ -208,3 +206,6 @@ nav:
         - 记忆化搜索: cs/Algorithms/Dynamic-Programming/Memorization-Search.md
       - 数据结构: 
         - 并查集: cs/Algorithms/Data-Structure/Union-Find.md
+    - 计算机图形学:
+      - OpenGL: 
+        - 深度测试: cs/Cg/OpenGL/Depth-Testing.md 

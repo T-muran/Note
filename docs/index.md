@@ -15,14 +15,11 @@ comments: true
 
 ## 简介
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+本人是暨大的2021级本科生，计科专业。这个网站是一个纯内容的网站，主要用于记录一些学习笔记和技术分享。
 
 ## 赞助
 
-支持正义投喂!!!
+如果本站对你有帮助的话，可以考虑赞助我一杯咖啡哦~
 
 <figure markdown>
 ![Sponsor Me!](assets/images/sponsor.png){ width="200px" }
