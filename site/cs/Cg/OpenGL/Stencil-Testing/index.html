@@ -8,31 +8,29 @@
       
       
       
-        <link rel="canonical" href="http://note.muransama.top/blog/category/unity/">
+        <link rel="canonical" href="http://note.muransama.top/cs/Cg/OpenGL/Stencil-Testing/">
       
       
-        <link rel="prev" href="../../">
+        <link rel="prev" href="../Depth-Testing/">
       
       
-        <link rel="next" href="../../archive/2024/03/">
       
+        <link rel="alternate" type="application/rss+xml" title="RSS 订阅" href="../../../../feed_rss_created.xml">
+        <link rel="alternate" type="application/rss+xml" title="已更新内容的 RSS 订阅" href="../../../../feed_rss_updated.xml">
       
-        <link rel="alternate" type="application/rss+xml" title="RSS 订阅" href="../../../feed_rss_created.xml">
-        <link rel="alternate" type="application/rss+xml" title="已更新内容的 RSS 订阅" href="../../../feed_rss_updated.xml">
-      
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.13">
     
     
       
-        <title>Unity - Muran's Notes</title>
+        <title>模板测试 - Muran's Notes</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.7e359304.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.7e359304.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -60,24 +58,24 @@
       
     
     
-      <link rel="stylesheet" href="../../../css/timeago.css">
+      <link rel="stylesheet" href="../../../../css/timeago.css">
     
-      <link rel="stylesheet" href="../../../assets/fonts/LXGW WenKai Screen/font.css">
+      <link rel="stylesheet" href="../../../../assets/fonts/LXGW WenKai Screen/font.css">
     
-      <link rel="stylesheet" href="../../../assets/fonts/JetBrains Mono/font.css">
+      <link rel="stylesheet" href="../../../../assets/fonts/JetBrains Mono/font.css">
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/theme.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/theme.css">
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/feature.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/feature.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -86,7 +84,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -105,7 +103,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#unity" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -121,7 +119,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../../.." title="Muran&#39;s Notes" class="md-header__button md-logo" aria-label="Muran's Notes" data-md-component="logo">
+    <a href="../../../.." title="Muran&#39;s Notes" class="md-header__button md-logo" aria-label="Muran's Notes" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.197 10a.75.75 0 0 0 0 1.5h6.5a.75.75 0 0 0 0-1.5h-6.5Zm-2.382 4a.75.75 0 0 0 0 1.5h6.5a.75.75 0 0 0 0-1.5h-6.5Zm-1.581 4a.75.75 0 0 0 0 1.5h6.5a.75.75 0 0 0 0-1.5h-6.5Z"/><path d="M4.125 0h15.75a4.11 4.11 0 0 1 2.92 1.205A4.11 4.11 0 0 1 24 4.125c0 1.384-.476 2.794-1.128 4.16-.652 1.365-1.515 2.757-2.352 4.104l-.008.013c-.849 1.368-1.669 2.691-2.28 3.97-.614 1.283-.982 2.45-.982 3.503a2.625 2.625 0 1 0 4.083-2.183.75.75 0 1 1 .834-1.247A4.126 4.126 0 0 1 19.875 24H4.5a4.125 4.125 0 0 1-4.125-4.125c0-2.234 1.258-4.656 2.59-6.902.348-.586.702-1.162 1.05-1.728.8-1.304 1.567-2.553 2.144-3.738H3.39c-.823 0-1.886-.193-2.567-1.035A3.647 3.647 0 0 1 0 4.125 4.125 4.125 0 0 1 4.125 0ZM15.75 19.875c0-1.38.476-2.786 1.128-4.15.649-1.358 1.509-2.743 2.343-4.086l.017-.028c.849-1.367 1.669-2.692 2.28-3.972.614-1.285.982-2.457.982-3.514A2.615 2.615 0 0 0 19.875 1.5a2.625 2.625 0 0 0-2.625 2.625c0 .865.421 1.509 1.167 2.009A.75.75 0 0 1 18 7.507H7.812c-.65 1.483-1.624 3.069-2.577 4.619-.334.544-.666 1.083-.98 1.612-1.355 2.287-2.38 4.371-2.38 6.137A2.625 2.625 0 0 0 4.5 22.5h12.193a4.108 4.108 0 0 1-.943-2.625ZM1.5 4.125c-.01.511.163 1.008.487 1.403.254.313.74.479 1.402.479h12.86a3.648 3.648 0 0 1-.499-1.882 4.11 4.11 0 0 1 .943-2.625H4.125A2.625 2.625 0 0 0 1.5 4.125Z"/></svg>
@@ -141,7 +139,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Unity
+              模板测试
             
           </span>
         </div>
@@ -271,7 +269,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Muran&#39;s Notes" class="md-nav__button md-logo" aria-label="Muran's Notes" data-md-component="logo">
+    <a href="../../../.." title="Muran&#39;s Notes" class="md-nav__button md-logo" aria-label="Muran's Notes" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.197 10a.75.75 0 0 0 0 1.5h6.5a.75.75 0 0 0 0-1.5h-6.5Zm-2.382 4a.75.75 0 0 0 0 1.5h6.5a.75.75 0 0 0 0-1.5h-6.5Zm-1.581 4a.75.75 0 0 0 0 1.5h6.5a.75.75 0 0 0 0-1.5h-6.5Z"/><path d="M4.125 0h15.75a4.11 4.11 0 0 1 2.92 1.205A4.11 4.11 0 0 1 24 4.125c0 1.384-.476 2.794-1.128 4.16-.652 1.365-1.515 2.757-2.352 4.104l-.008.013c-.849 1.368-1.669 2.691-2.28 3.97-.614 1.283-.982 2.45-.982 3.503a2.625 2.625 0 1 0 4.083-2.183.75.75 0 1 1 .834-1.247A4.126 4.126 0 0 1 19.875 24H4.5a4.125 4.125 0 0 1-4.125-4.125c0-2.234 1.258-4.656 2.59-6.902.348-.586.702-1.162 1.05-1.728.8-1.304 1.567-2.553 2.144-3.738H3.39c-.823 0-1.886-.193-2.567-1.035A3.647 3.647 0 0 1 0 4.125 4.125 4.125 0 0 1 4.125 0ZM15.75 19.875c0-1.38.476-2.786 1.128-4.15.649-1.358 1.509-2.743 2.343-4.086l.017-.028c.849-1.367 1.669-2.692 2.28-3.972.614-1.285.982-2.457.982-3.514A2.615 2.615 0 0 0 19.875 1.5a2.625 2.625 0 0 0-2.625 2.625c0 .865.421 1.509 1.167 2.009A.75.75 0 0 1 18 7.507H7.812c-.65 1.483-1.624 3.069-2.577 4.619-.334.544-.666 1.083-.98 1.612-1.355 2.287-2.38 4.371-2.38 6.137A2.625 2.625 0 0 0 4.5 22.5h12.193a4.108 4.108 0 0 1-.943-2.625ZM1.5 4.125c-.01.511.163 1.008.487 1.403.254.313.74.479 1.402.479h12.86a3.648 3.648 0 0 1-.499-1.882 4.11 4.11 0 0 1 .943-2.625H4.125A2.625 2.625 0 0 0 1.5 4.125Z"/></svg>
@@ -301,7 +299,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -321,7 +319,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../websiteRes/" class="md-nav__link">
+      <a href="../../../../websiteRes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -338,19 +336,17 @@
       
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -364,7 +360,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             个人博客
@@ -380,7 +376,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../" class="md-nav__link">
+      <a href="../../../../blog/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -438,7 +434,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../archive/2024/03/" class="md-nav__link">
+      <a href="../../../../blog/archive/2024/03/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -464,19 +460,17 @@
                 
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
         
           
           <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
@@ -490,7 +484,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_3">
             <span class="md-nav__icon md-icon"></span>
             分类
@@ -501,23 +495,12 @@
                 
   
   
-    
-  
   
     
-      
-    
   
   
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../../blog/category/unity/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -526,7 +509,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -589,7 +571,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../news/" class="md-nav__link">
+      <a href="../../../../news/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -652,7 +634,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../basic/Advanced-Mathematics/placeholder/" class="md-nav__link">
+      <a href="../../../../basic/Advanced-Mathematics/placeholder/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -677,17 +659,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -701,7 +685,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             计算机
@@ -820,7 +804,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs/Language/C-CPP/STL/STL-base/" class="md-nav__link">
+      <a href="../../../Language/C-CPP/STL/STL-base/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -892,7 +876,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs/Language/CSharp/Coding-Convention/" class="md-nav__link">
+      <a href="../../../Language/CSharp/Coding-Convention/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -964,7 +948,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs/Algorithms/res/" class="md-nav__link">
+      <a href="../../../Algorithms/res/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1020,7 +1004,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs/Algorithms/Search/DFS-Search/" class="md-nav__link">
+      <a href="../../../Algorithms/Search/DFS-Search/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1084,7 +1068,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs/Algorithms/Dynamic-Programming/Memorization-Search/" class="md-nav__link">
+      <a href="../../../Algorithms/Dynamic-Programming/Memorization-Search/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1148,7 +1132,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs/Algorithms/Data-Structure/Union-Find/" class="md-nav__link">
+      <a href="../../../Algorithms/Data-Structure/Union-Find/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1182,17 +1166,19 @@
                 
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" checked>
         
           
           <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
@@ -1206,7 +1192,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_3">
             <span class="md-nav__icon md-icon"></span>
             计算机图形学
@@ -1217,17 +1203,19 @@
                 
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_1" checked>
         
           
           <label class="md-nav__link" for="__nav_6_3_1" id="__nav_6_3_1_label" tabindex="0">
@@ -1241,7 +1229,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_3_1">
             <span class="md-nav__icon md-icon"></span>
             OpenGL
@@ -1255,7 +1243,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs/Cg/OpenGL/Depth-Testing/" class="md-nav__link">
+      <a href="../Depth-Testing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1273,10 +1261,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../cs/Cg/OpenGL/Stencil-Testing/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    模板测试
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1285,6 +1293,68 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      模板缓冲
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      模板函数
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      模板缓冲示例
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="模板缓冲示例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      物体轮廓
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1333,6 +1403,56 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      模板缓冲
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      模板函数
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      模板缓冲示例
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="模板缓冲示例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      物体轮廓
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1340,58 +1460,248 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="unity">Unity<a class="headerlink" href="#unity" title="Permanent link">&para;</a></h1>
-      </header>
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/T-muran/Note/blob/main/docs/cs/Cg/OpenGL/Stencil-Testing.md" title="编辑此页" class="md-content__button md-icon">
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="_1">模板测试<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">模板缓冲<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>当片段着色器处理完一个片段之后，模板测试(Stencil Test)会开始执行，和深度测试一样，它也可能会丢弃片段。接下来，被保留的片段会进入深度测试，它可能会丢弃更多的片段。模板测试是根据又一个缓冲来进行的，它叫做模板缓冲(Stencil Buffer)，我们可以在渲染的时候更新它来获得一些很有意思的效果。</p>
+<p>一个模板缓冲中，（通常）每个模板值(Stencil Value)是8位的。所以每个像素/片段一共能有256种不同的模板值。我们可以将这些模板值设置为我们想要的值，然后当某一个片段有某一个模板值的时候，我们就可以选择丢弃或是保留这个片段了。</p>
+<div class="admonition tip">
+<p>每个窗口库都需要为你配置一个模板缓冲。GLFW自动做了这件事，所以我们不需要告诉GLFW来创建一个，但其它的窗口库可能不会默认给你创建一个模板库，所以记得要查看库的文档。</p>
+</div>
+<p>模板缓冲的一个简单的例子如下：</p>
+<p><a class="glightbox" href="/assets/images/CG/stencil-test1.png" data-type="image" data-width="auto" data-height="auto" data-title="模板测试" data-desc-position="bottom"><img alt="模板测试" src="/assets/images/CG/stencil-test1.png" /></a></p>
+<p>模板缓冲首先会被清除为0，之后在模板缓冲中使用1填充了一个空心矩形。场景中的片段将会只在片段的模板值为1的时候会被渲染（其它的都被丢弃了）。</p>
+<p>模板缓冲操作允许我们在渲染片段时将模板缓冲设定为一个特定的值。通过在渲染时修改模板缓冲的内容，我们写入了模板缓冲。在同一个（或者接下来的）渲染迭代中，我们可以读取这些值，来决定丢弃还是保留某个片段。</p>
+<div class="admonition note">
+<p class="admonition-title">模板缓冲</p>
+<p>使用模板缓冲的时候你可以尽情发挥，但大体的步骤如下：</p>
+<ul>
+<li>启用模板缓冲的写入。</li>
+<li>渲染物体，更新模板缓冲的内容。</li>
+<li>禁用模板缓冲的写入。</li>
+<li>渲染（其它）物体，这次根据模板缓冲的内容丢弃特定的片段。</li>
+</ul>
+</div>
+<p>所以，通过使用模板缓冲，我们可以根据场景中已绘制的其它物体的片段，来决定是否丢弃特定的片段。</p>
+<p>你可以启用GL_STENCIL_TEST来启用模板测试。在这一行代码之后，所有的渲染调用都会以某种方式影响着模板缓冲。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">glEnable</span><span class="p">(</span><span class="n">GL_STENCIL_TEST</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<p>注意，和颜色和深度缓冲一样，你也需要在每次迭代之前清除模板缓冲。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="n">glClear</span><span class="p">(</span><span class="n">GL_COLOR_BUFFER_BIT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">GL_DEPTH_BUFFER_BIT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">GL_STENCIL_BUFFER_BIT</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<p>和深度测试的glDepthMask函数一样，模板缓冲也有一个类似的函数。glStencilMask允许我们设置一个位掩码(Bitmask)，它会与将要写入缓冲的模板值进行与(AND)运算。默认情况下设置的位掩码所有位都为1，不影响输出，但如果我们将它设置为0x00，写入缓冲的所有模板值最后都会变成0.这与深度测试中的glDepthMask(GL_FALSE)是等价的。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="n">glStencilMask</span><span class="p">(</span><span class="mh">0xFF</span><span class="p">);</span><span class="w"> </span><span class="c1">// 每一位写入模板缓冲时都保持原样</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="n">glStencilMask</span><span class="p">(</span><span class="mh">0x00</span><span class="p">);</span><span class="w"> </span><span class="c1">// 每一位在写入模板缓冲时都会变成0（禁用写入）</span>
+</code></pre></div></td></tr></table></div>
+<p>大部分情况下你都只会使用0x00或者0xFF作为模板掩码(Stencil Mask)，但是知道有选项可以设置自定义的位掩码总是好的。</p>
+<h2 id="_3">模板函数<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>和深度测试一样，我们对模板缓冲应该通过还是失败，以及它应该如何影响模板缓冲，也是有一定控制的。一共有两个函数能够用来配置模板测试：glStencilFunc和glStencilOp。</p>
+<div class="admonition note">
+<p class="admonition-title">glStencilFunc(GLenum func, GLint ref, GLuint mask)</p>
+<p>一共包含三个参数：</p>
+<ul>
+<li>func：设置模板测试函数(Stencil Test Function)。这个测试函数将会应用到已储存的模板值上和glStencilFunc函数的ref值上。可用的选项有：GL_NEVER、GL_LESS、GL_LEQUAL、GL_GREATER、GL_GEQUAL、GL_EQUAL、GL_NOTEQUAL和GL_ALWAYS。它们的语义和深度缓冲的函数类似。</li>
+<li>ref：设置了模板测试的参考值(Reference Value)。模板缓冲的内容将会与这个值进行比较。</li>
+<li>mask：设置一个掩码，它将会与参考值和储存的模板值在测试比较它们之前进行与(AND)运算。初始情况下所有位都为1。</li>
+</ul>
+</div>
+<p>glStencilFunc仅仅描述了OpenGL应该对模板缓冲内容做什么，而不是我们应该如何更新缓冲。这就需要glStencilOp这个函数了。</p>
+<div class="admonition note">
+<p class="admonition-title">glStencilOp(GLenum sfail, GLenum dpfail, GLenum dppass)</p>
+<p>一共包含三个选项，我们能够设定每个选项应该采取的行为：</p>
+<ul>
+<li>sfail：模板测试失败时采取的行为。</li>
+<li>dpfail：模板测试通过，但深度测试失败时采取的行为。</li>
+<li>dppass：模板测试和深度测试都通过时采取的行为。</li>
+</ul>
+</div>
+<p>每个选项都可以选用以下的其中一种行为：</p>
+<table>
+<thead>
+<tr>
+<th>行为</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GL行为_KEEP行为</td>
+<td>描述描述保持当前储存的模板值</td>
+</tr>
+<tr>
+<td>GL_KEEPGL_KEEPGL_ZERO</td>
+<td>保持当前储存的模板值保持当前储存的模板值将模板值设置为0</td>
+</tr>
+<tr>
+<td>GL_ZEROGL_ZEROGL_REPLACE</td>
+<td>将模板值设置为0将模板值设置为0将模板值设置为glStencilFunc函数设置的<code>ref</code>值</td>
+</tr>
+<tr>
+<td>GL_REPLACEGL_REPLACEGL_INCR</td>
+<td>将模板值设置为glStencilFunc函数设置的<code>ref</code>值将模板值设置为glStencilFunc函数设置的<code>ref</code>值如果模板值小于最大值则将模板值加1</td>
+</tr>
+<tr>
+<td>GL_INCRGL_INCRGL_INCR_WRAP</td>
+<td>如果模板值小于最大值则将模板值加1如果模板值小于最大值则将模板值加1与GL_INCR一样，但如果模板值超过了最大值则归零</td>
+</tr>
+<tr>
+<td>GL_INCR_WRAPGL_INCR_WRAPGL_DECR</td>
+<td>与GL_INCR一样，但如果模板值超过了最大值则归零与GL_INCR一样，但如果模板值超过了最大值则归零如果模板值大于最小值则将模板值减1</td>
+</tr>
+<tr>
+<td>GL_DECRGL_DECR</td>
+<td>如果模板值大于最小值则将模板值减1如果模板值大于最小值则将模板值减1</td>
+</tr>
+<tr>
+<td>GL_DECR_WRAPGL_DECR_WRAP</td>
+<td>与GL_DECR一样，但如果模板值小于0则将其设置为最大值与GL_DECR一样，但如果模板值小于0则将其设置为最大值</td>
+</tr>
+<tr>
+<td>GL_INVERT</td>
+<td>按位翻转当前的模板缓冲值</td>
+</tr>
+</tbody>
+</table>
+<p>默认情况下glStencilOp是设置为(GL_KEEP, GL_KEEP, GL_KEEP)的，所以不论任何测试的结果是如何，模板缓冲都会保留它的值。默认的行为不会更新模板缓冲，所以如果你想写入模板缓冲的话，你需要至少对其中一个选项设置不同的值。</p>
+<p>所以，通过使用glStencilFunc和glStencilOp，我们可以精确地指定更新模板缓冲的时机与行为了，我们也可以指定什么时候该让模板缓冲通过，即什么时候片段需要被丢弃。</p>
+<h2 id="_4">模板缓冲示例<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="_5">物体轮廓<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>模板缓冲的一个很有用的应用是为物体轮廓创建一个边框。</p>
+<p>物体轮廓正如它名字所描述的那样。我们将会为每个（或者一个）物体在它的周围创建一个很小的有色边框。当你想要在策略游戏中选中一个单位进行操作的，想要告诉玩家选中的是哪个单位的时候，这个效果就非常有用了。</p>
+<div class="admonition note">
+<p class="admonition-title">物体轮廓</p>
+<p>为物体创建轮廓的步骤如下：</p>
+<ol>
+<li>在绘制（需要添加轮廓的）物体之前，将模板函数设置为GL_ALWAYS，每当物体的片段被渲染时，将模板缓冲更新为1。</li>
+<li>渲染物体。</li>
+<li>禁用模板写入以及深度测试。</li>
+<li>将每个物体缩放一点点。</li>
+<li>使用一个不同的片段着色器，输出一个单独的（边框）颜色。</li>
+<li>再次绘制物体，但只在它们片段的模板值不等于1时才绘制。</li>
+<li>再次启用模板写入和深度测试。</li>
+</ol>
+</div>
+<p>这个过程将每个物体的片段的模板缓冲设置为1，当我们想要绘制边框的时候，我们主要绘制放大版本的物体中模板测试通过的部分，也就是物体的边框的位置。我们主要使用模板缓冲丢弃了放大版本中属于原物体片段的部分。</p>
+<p>物体轮廓算法在需要显示选中物体的游戏（想想策略游戏）中非常常见。这样的算法能够在一个模型类中轻松实现。你可以在模型类中设置一个boolean标记，来设置需不需要绘制边框。有创造力的话，也可以使用后期处理滤镜(Filter)，像是高斯模糊(Gaussian Blur)，让边框看起来更自然。</p>
+<div class="admonition info">
+<p>除了物体轮廓之外，模板测试还有很多用途，比如在一个后视镜中绘制纹理，让它能够绘制到镜子形状中，或者使用一个叫做阴影体积(Shadow Volume)的模板缓冲技术渲染实时阴影。</p>
+</div>
+
+
+
+
+
+
+
+  
     
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-03-08 00:00:00">2024-03-08</time></li>
-        
-          <li class="md-meta__item">
-            分类于
-            
-              <a href="./" class="md-meta__link">Unity</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              预计阅读 1 分钟
-            
-          </li>
-        
-      </ul>
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
       
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="unity-test"><a class="toclink" href="../../posts/test-2024-03-08/">Unity Test</a></h2>
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-03-16T01:08:24+08:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-16</span>
+  </span>
 
     
-  </div>
-</article>
+    
       
-      
-        
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="创建日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-03-16T01:08:24+08:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-16</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+  <h2 id="__comments">评论</h2>
+  <!-- Insert generated snippet here -->
+  <script src="https://giscus.app/client.js"
+  data-repo="T-muran/Note"
+  data-repo-id="R_kgDOLc8X3A"
+  data-category="General"
+  data-category-id="DIC_kwDOLc8X3M4Cd05V"
+  data-mapping="pathname"
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="top"
+  data-theme="light"
+  data-lang="zh-CN"
+  data-loading="lazy"
+  crossorigin="anonymous"
+  async>
+</script>
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate"
+        ? "transparent_dark"
+        : "light"
+
+      // Instruct Giscus to set theme
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+          // Instruct Giscus to change theme
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+                
+              </article>
+            </div>
           
-
-
-
-<nav class="md-pagination">
-  <span class="md-pagination__current">1</span>
-</nav>
-        
-      
-    </div>
-  </div>
-
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
@@ -1411,7 +1721,7 @@
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../../" class="md-footer__link md-footer__link--prev" aria-label="上一页: 博客文章">
+          <a href="../Depth-Testing/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 深度测试">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -1421,27 +1731,11 @@
                 上一页
               </span>
               <div class="md-ellipsis">
-                博客文章
+                深度测试
               </div>
             </div>
           </a>
         
-        
-          
-          <a href="../../archive/2024/03/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2024 年 03 月">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              <div class="md-ellipsis">
-                2024 年 03 月
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-            </div>
-          </a>
         
       </nav>
     
@@ -1519,16 +1813,16 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["announce.dismiss", "content.tooltips", "content.code.copy", "content.code.annotate", "content.action.edit", "navigation.top", "navigation.path", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "tags": {"": "default"}, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["announce.dismiss", "content.tooltips", "content.code.copy", "content.code.annotate", "content.action.edit", "navigation.top", "navigation.path", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share"], "search": "../../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "tags": {"": "default"}, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.c8d2eff1.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.c8d2eff1.min.js"></script>
       
-        <script src="../../../js/timeago.min.js"></script>
+        <script src="../../../../js/timeago.min.js"></script>
       
-        <script src="../../../js/timeago_mkdocs_material.js"></script>
+        <script src="../../../../js/timeago_mkdocs_material.js"></script>
       
-        <script src="../../../assets/javascripts/mathjax.js"></script>
+        <script src="../../../../assets/javascripts/mathjax.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       

@@ -208,4 +208,5 @@ nav:
         - 并查集: cs/Algorithms/Data-Structure/Union-Find.md
     - 计算机图形学:
       - OpenGL: 
-        - 深度测试: cs/Cg/OpenGL/Depth-Testing.md 
+        - 深度测试: cs/Cg/OpenGL/Depth-Testing.md
+        - 模板测试: cs/Cg/OpenGL/Stencil-Testing.md 
