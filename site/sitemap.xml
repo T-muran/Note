@@ -2,82 +2,87 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>http://note.muransama.top/</loc>
-         <lastmod>2024-03-15</lastmod>
+         <lastmod>2024-03-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://note.muransama.top/websiteRes/</loc>
-         <lastmod>2024-03-15</lastmod>
+         <lastmod>2024-03-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://note.muransama.top/basic/Advanced-Mathematics/placeholder/</loc>
-         <lastmod>2024-03-15</lastmod>
+         <lastmod>2024-03-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://note.muransama.top/blog/</loc>
-         <lastmod>2024-03-15</lastmod>
+         <lastmod>2024-03-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://note.muransama.top/blog/posts/test-2024-03-08/</loc>
-         <lastmod>2024-03-15</lastmod>
+         <lastmod>2024-03-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://note.muransama.top/cs/Algorithms/res/</loc>
-         <lastmod>2024-03-15</lastmod>
+         <lastmod>2024-03-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://note.muransama.top/cs/Algorithms/Data-Structure/Union-Find/</loc>
-         <lastmod>2024-03-15</lastmod>
+         <lastmod>2024-03-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://note.muransama.top/cs/Algorithms/Dynamic-Programming/Memorization-Search/</loc>
-         <lastmod>2024-03-15</lastmod>
+         <lastmod>2024-03-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://note.muransama.top/cs/Algorithms/Search/DFS-Search/</loc>
-         <lastmod>2024-03-15</lastmod>
+         <lastmod>2024-03-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>http://note.muransama.top/cs/Cg/OpenGL/Blending/</loc>
+         <lastmod>2024-03-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://note.muransama.top/cs/Cg/OpenGL/Depth-Testing/</loc>
-         <lastmod>2024-03-15</lastmod>
+         <lastmod>2024-03-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://note.muransama.top/cs/Cg/OpenGL/Stencil-Testing/</loc>
-         <lastmod>2024-03-15</lastmod>
+         <lastmod>2024-03-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://note.muransama.top/cs/Language/C-CPP/STL/STL-base/</loc>
-         <lastmod>2024-03-15</lastmod>
+         <lastmod>2024-03-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://note.muransama.top/cs/Language/CSharp/Coding-Convention/</loc>
-         <lastmod>2024-03-15</lastmod>
+         <lastmod>2024-03-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://note.muransama.top/news/</loc>
-         <lastmod>2024-03-15</lastmod>
+         <lastmod>2024-03-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://note.muransama.top/blog/archive/2024/03/</loc>
-         <lastmod>2024-03-15</lastmod>
+         <lastmod>2024-03-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://note.muransama.top/blog/category/unity/</loc>
-         <lastmod>2024-03-15</lastmod>
+         <lastmod>2024-03-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

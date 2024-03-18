@@ -210,3 +210,4 @@ nav:
       - OpenGL: 
         - 深度测试: cs/Cg/OpenGL/Depth-Testing.md
         - 模板测试: cs/Cg/OpenGL/Stencil-Testing.md 
+        - 混合: cs/Cg/OpenGL/Blending.md
