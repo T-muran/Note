@@ -190,7 +190,8 @@ nav:
   - RSS 阅读:
     - news/index.md
   - 基础学科: 
-    - 高等数学: basic/Advanced-Mathematics/placeholder.md
+    - 高等数学: 
+      - 极限与连续: basic/Advanced-Mathematics/Limit-Continuous.md
   - 计算机:
     - 编程语言: 
       - C/C++: 
@@ -211,3 +212,8 @@ nav:
         - 深度测试: cs/Cg/OpenGL/Depth-Testing.md
         - 模板测试: cs/Cg/OpenGL/Stencil-Testing.md 
         - 混合: cs/Cg/OpenGL/Blending.md
+    - 设计模式:
+      - 简介: cs/Design-Patterns/Introduction.md
+      - 创建型模式: cs/Design-Patterns/Creational.md
+      - 结构型模式: cs/Design-Patterns/Structural.md
+      - 行为型模式: cs/Design-Patterns/Behavioral.md
