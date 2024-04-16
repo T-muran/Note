@@ -285,3 +285,95 @@ void Journal::save(const string& filename)
 
     在一个架构中，不得不在大量的类中做很多微小的更改，无论是否相关，通常都是一种代码气味(code smell)，这意味着这个设计可能不够好。
 
+因此，持久化是一个单独的问题，最好在一个单独的类别中表达，例如：
+
+   ```cpp
+   struct PersistenceManager
+   {
+      static void save(const Journal& j, const string& filename)
+      {
+         ofstream ofs(filename);
+         for (auto& s: j.entries)
+               ofs << s << endl;
+      }
+   };
+   ```
+
+这正是单一责任（Single Responsibility）的含义：每个类只有一个责任，因此，只有一个改变的理由。只有在需要对条目的存储做更多工作的情况下，Journal 才需要更改。例如，你可能希望每个条目都以时间戳为前缀，因此，你将更改 add() 函数来实现这一点。从另一方面来说，如果你要更改持久化机制，这将在 PersistenceManager 中进行更改。
+
+### 里氏替换原则（Liskov Substitution Principle || LSP）
+
+!!! note "主要思想"
+
+    子类对象能够替换程序中任何地方出现的父类对象，并且保证原来程序的逻辑行为不变(正确性不被破坏),即所有引用基类的地方必须能透明地使用其子类的对象。
+
+里氏替换原则指出，如果一个接口可以接受类型为 Parent 的对象，那么它应该同样地可以接受类型为 Child 的对象，而不会有任何破坏。让我们来看看 LSP 被破坏的情况。
+
+下面是一个矩形；它有宽度（width）和高度（height），以及一组计算面积的 getters 和 setters：
+
+   ```cpp
+   class Rectangle
+   {
+   protected:
+      int width, height;
+   public:
+      Rectangle(const int width, const int height)
+         : width{width}, height{height} { }
+      
+      int get_width() const { return width; }
+      virtual void set_width(const int width) { this->width = width; }
+      int get_height() const { return height; }
+      virtual void set_height(const int height) { this->height = height; }
+      
+      int area() const { return width * height; }
+   };
+   ```
+
+现在，假设我们有一种特殊的矩形，称为正方形。此对象将重写 setters，以设置宽度和高度：
+
+   ```cpp
+   class Square : public Rectangle
+   {
+   public:
+      Square(int size) : Rectangle(size, size) {}
+      void set_width(const int width) override {
+         this->width = height = width;
+      }
+      void set_height(const int height) override {
+         this->height = width = height;
+      }
+   };
+   ```
+
+这种做法是邪恶的。你还看不到它，因为它确实是无辜的：setters 简单地设置了两个维度，可能会发生什么错误呢？好吧，如果我们采用前面的方法，我们可以很容易地构建一个函数，该函数以 Rectangle 类型变量为参数，当传入 Square 类型变量时，它会爆炸：
+
+   ```cpp
+   void process(Rectangle& r)
+   {
+      int w = r.get_width();
+      r.set_height(10);
+      
+      cout << "expected area = " << (w * 10)
+         << ", got " << r.area() << endl;
+   }
+   ```
+
+前面的函数以公式 Area = Width * Height 作为不变量。它得到宽度，设置高度，并正确地期望乘积等于计算的面积。但是使用 Square 调用前面的函数会产生不匹配：
+
+   ```cpp
+   Square s{5};
+   process(s); // 期望 area = 50, 实际获得 100
+   ```
+这个例子中，process() 完全不能接受派生类型 Square 而不是基类型 Rectangle，从而破坏了 LSP 原则。如果你给它一个 Rectangle，一切都很好，所以它可能需要一些时间才能出现在你的测试（或者生产，希望不是！）。
+
+解决办法是什么呢？嗯，有很多。就我个人而言，我认为类型 Square 甚至不应该存在：相反，我们可以创建一个工厂来创建矩形和正方形：
+
+   ```cpp
+   struct RectangleFactory
+   {
+      static Rectangle create_rectangle(int w, int h);
+      static Rectangle create_square(int size);
+   };
+   ```
+
+### 依赖倒置原则（Dependency Inversion Principle || DIP）
