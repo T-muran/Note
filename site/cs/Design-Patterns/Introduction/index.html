@@ -1558,6 +1558,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="设计模式六大原则">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#open-close-principle-ocp" class="md-nav__link">
+    <span class="md-ellipsis">
+      开闭原则（Open Close Principle || OCP）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#single-responsibility-principle-srp" class="md-nav__link">
+    <span class="md-ellipsis">
+      单一职责原则（Single Responsibility Principle || SRP）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1722,6 +1746,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="设计模式六大原则">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#open-close-principle-ocp" class="md-nav__link">
+    <span class="md-ellipsis">
+      开闭原则（Open Close Principle || OCP）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#single-responsibility-principle-srp" class="md-nav__link">
+    <span class="md-ellipsis">
+      单一职责原则（Single Responsibility Principle || SRP）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1810,9 +1858,7 @@
 <a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="n">p</span><span class="p">.</span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="_4">设计模式六大原则<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<ol>
-<li>开闭原则（Open Close Principle || OCP）</li>
-</ol>
+<h3 id="open-close-principle-ocp">开闭原则（Open Close Principle || OCP）<a class="headerlink" href="#open-close-principle-ocp" title="Permanent link">&para;</a></h3>
 <div class="admonition note">
 <p class="admonition-title">主要思想</p>
 <p>开闭原则的意思是：对扩展开放，对修改关闭。</p>
@@ -1891,11 +1937,11 @@
 <span class="normal"><a href="#__codelineno-9-3">3</a></span>
 <span class="normal"><a href="#__codelineno-9-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Specification</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="p">{</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">is_satisfied</span><span class="p">(</span><span class="n">T</span><span class="o">*</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="w">   </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">is_satisfied</span><span class="p">(</span><span class="n">T</span><span class="o">*</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="p">};</span>
 </code></pre></div></td></tr></table></div>
 <p>在前面的示例中，类型 T 是我们选择的任何类型：它当然可以是一个 Product，但也可以是其它东西。这使得整个方法可重复使用。</p>
-<p>接下来，我们需要一种基于 Specification<T> 的过滤方法：你猜到的，这是通过定义完成，一个 Filter<T>：</p>
+<p>接下来，我们需要一种基于 <code>Specification&lt;T&gt;</code> 的过滤方法：你猜到的，这是通过定义完成，一个 <code>Filter&lt;T&gt;</code>：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
 <span class="normal"><a href="#__codelineno-10-2">2</a></span>
 <span class="normal"><a href="#__codelineno-10-3">3</a></span>
@@ -1903,12 +1949,169 @@
 <span class="normal"><a href="#__codelineno-10-5">5</a></span>
 <span class="normal"><a href="#__codelineno-10-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Filter</span>
 <a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="p">{</span>
-<a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">T</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">filter</span><span class="p">(</span>
-<a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="w">     </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">T</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">items</span><span class="p">,</span>
-<a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="w">     </span><span class="n">Specification</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">spec</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="w">   </span><span class="k">virtual</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">T</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">filter</span><span class="p">(</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="w">   </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">T</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">items</span><span class="p">,</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="w">   </span><span class="n">Specification</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">spec</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <a id="__codelineno-10-6" name="__codelineno-10-6"></a><span class="p">};</span>
 </code></pre></div></td></tr></table></div>
-<p>同样的，我们所做的就是为一个名为 filter 的函数指定签名，该函数接受所有项目和一个规范，并返回符合规范的所有项目。假设这些项目被存储为 vector<T*>，但实际上，你可以向 filter() 传递，或者是一对迭代器，或者是一些专门为遍历集合而设计的定制接口。遗憾的是，C++ 语言未能标准化枚举或集合的概念，这是存在于其它编程语言（例如，.NET 的 IEnumerable）中的东西。</p>
+<p>同样的，我们所做的就是为一个名为 filter 的函数指定签名，该函数接受所有项目和一个规范，并返回符合规范的所有项目。假设这些项目被存储为 vector<T*>，但实际上，你可以向 filter() 传递一对迭代器，或者是一些专门为遍历集合而设计的定制接口。遗憾的是，C++ 语言未能标准化枚举或集合的概念，这是存在于其它编程语言（例如，.NET 的 IEnumerable）中的东西。</p>
+<p>基于前述，改进的过滤器的实现非常的简单：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-11-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-11-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-11-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-11-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-11-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-11-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-11-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-11-10">10</a></span>
+<span class="normal"><a href="#__codelineno-11-11">11</a></span>
+<span class="normal"><a href="#__codelineno-11-12">12</a></span>
+<span class="normal"><a href="#__codelineno-11-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="k">struct</span><span class="w"> </span><span class="nc">BetterFilter</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Filter</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="p">{</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="w">   </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">filter</span><span class="p">(</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="w">      </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">items</span><span class="p">,</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="w">      </span><span class="n">Specification</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">spec</span><span class="p">)</span><span class="w"> </span><span class="k">override</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="w">   </span><span class="p">{</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="w">      </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">items</span><span class="p">)</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9"></a><span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">spec</span><span class="p">.</span><span class="n">is_satisfied</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10"></a><span class="w">            </span><span class="n">result</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11"></a><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12"></a><span class="w">   </span><span class="p">}</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13"></a><span class="p">};</span>
+</code></pre></div></td></tr></table></div>
+<p>可以看到 <code>Specification&lt;T&gt;</code>，该规范被传入作为 std::function 的强类型化等效项，该函数仅约束到一定数量的可能的筛选规格。</p>
+<p>现在，我们可以定义规范，制作一个颜色过滤器，例如：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-12-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-12-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-12-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-12-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-12-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-12-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-12-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-12-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-12-10">10</a></span>
+<span class="normal"><a href="#__codelineno-12-11">11</a></span>
+<span class="normal"><a href="#__codelineno-12-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="k">struct</span><span class="w"> </span><span class="nc">ColorSpecification</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Specification</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="p">{</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="w">   </span><span class="n">Color</span><span class="w"> </span><span class="n">color</span><span class="p">;</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="w">   </span><span class="k">explicit</span><span class="w"> </span><span class="n">ColorSpecification</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="n">color</span><span class="p">)</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="n">color</span><span class="p">{</span><span class="n">color</span><span class="p">}</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="w">   </span><span class="p">{</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="w">   </span><span class="p">}</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8"></a><span class="w">   </span><span class="kt">bool</span><span class="w"> </span><span class="n">is_satisfied</span><span class="p">(</span><span class="n">Product</span><span class="o">*</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="k">override</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9"></a><span class="w">   </span><span class="p">{</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10"></a><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">item</span><span class="o">-&gt;</span><span class="n">color</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">color</span><span class="p">;</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11"></a><span class="w">   </span><span class="p">}</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12"></a><span class="p">};</span>
+</code></pre></div></td></tr></table></div>
+<p>为了添加一个按尺寸过滤的功能，我们需要一个复合规范:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-13-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-13-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-13-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-13-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-13-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-13-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-13-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-13-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-13-10">10</a></span>
+<span class="normal"><a href="#__codelineno-13-11">11</a></span>
+<span class="normal"><a href="#__codelineno-13-12">12</a></span>
+<span class="normal"><a href="#__codelineno-13-13">13</a></span>
+<span class="normal"><a href="#__codelineno-13-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">AndSpecification</span><span class="w"> </span><span class="o">:</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="n">Specification</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="p">{</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="n">Specification</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">first</span><span class="p">;</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="n">Specification</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">second</span><span class="p">;</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6"></a>
+<a id="__codelineno-13-7" name="__codelineno-13-7"></a><span class="n">AndSpecification</span><span class="p">(</span><span class="n">Specification</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">first</span><span class="p">,</span><span class="n">Specification</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">second</span><span class="p">)</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8"></a><span class="o">:</span><span class="w"> </span><span class="n">first</span><span class="p">{</span><span class="n">first</span><span class="p">},</span><span class="w"> </span><span class="n">second</span><span class="p">{</span><span class="n">second</span><span class="p">}</span><span class="w"> </span><span class="p">{}</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9"></a>
+<a id="__codelineno-13-10" name="__codelineno-13-10"></a><span class="kt">bool</span><span class="w"> </span><span class="n">is_satisfied</span><span class="p">(</span><span class="n">T</span><span class="o">*</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="k">override</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11"></a><span class="p">{</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12"></a><span class="k">return</span><span class="w"> </span><span class="n">first</span><span class="p">.</span><span class="n">is_satisfied</span><span class="p">(</span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">second</span><span class="p">.</span><span class="n">is_satisfied</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13"></a><span class="p">}</span>
+<a id="__codelineno-13-14" name="__codelineno-13-14"></a><span class="p">};</span>
+</code></pre></div></td></tr></table></div>
+<p>这里有很多代码！但是请记住，由于 C++ 的强大功能，你可以简单地引入一个 operator &amp;&amp; 用于两个 <code>Specification&lt;T&gt;</code> 对象，从而使得过滤过程由两个（或更多！）标准，极为简单：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
+<span class="normal"><a href="#__codelineno-14-2">2</a></span>
+<span class="normal"><a href="#__codelineno-14-3">3</a></span>
+<span class="normal"><a href="#__codelineno-14-4">4</a></span>
+<span class="normal"><a href="#__codelineno-14-5">5</a></span>
+<span class="normal"><a href="#__codelineno-14-6">6</a></span>
+<span class="normal"><a href="#__codelineno-14-7">7</a></span>
+<span class="normal"><a href="#__codelineno-14-8">8</a></span>
+<span class="normal"><a href="#__codelineno-14-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Specification</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="p">{</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="w">   </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">is_satisfied</span><span class="p">(</span><span class="n">T</span><span class="o">*</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a>
+<a id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="w">   </span><span class="n">AndSpecification</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="k">operator</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">(</span><span class="n">Specification</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">other</span><span class="p">)</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6"></a><span class="w">   </span><span class="p">{</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7"></a><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">AndSpecification</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">other</span><span class="p">);</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8"></a><span class="w">   </span><span class="p">}</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9"></a><span class="p">};</span>
+</code></pre></div></td></tr></table></div>
+<p>如果你现在避免为尺寸/颜色规范设置额外的变量，则可以将复合规范简化为一行：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="k">auto</span><span class="w"> </span><span class="n">green_and_big</span><span class="w"> </span><span class="o">=</span><span class="n">ColorSpecification</span><span class="p">(</span><span class="n">Color</span><span class="o">::</span><span class="n">Green</span><span class="p">)</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">SizeSpecification</span><span class="p">(</span><span class="n">Size</span><span class="o">::</span><span class="n">Large</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<p>因此，让我们回顾以下 OCP 原则是声明，以及前面的示例是如何执行它的。基本上，OCP 声明你不需要返回你已经编写和测试过的代码，并对其进行更改。这正是这里发生的！我们制定了 <code>Specification&lt;T&gt;</code> 和 <code>Filter&lt;T&gt;</code>，从那时起，我们所要做的就是实现任何一个接口（不需要修改接口本身）来实现新的过滤机制。这就是“开放供扩展，封闭供修改”的意思。</p>
+<h3 id="single-responsibility-principle-srp">单一职责原则（Single Responsibility Principle || SRP）<a class="headerlink" href="#single-responsibility-principle-srp" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">主要思想</p>
+<p>单一职责原则表示一个模块的组成元素之间的功能相关性。从软件变化的角度来看，就一个类而言，应该仅有一个让它变化的原因；通俗地说，即一个类只负责一项职责。</p>
+</div>
+<p>假设您决定把您最私密的想法记在日记里。日记具有一个标题和多个条目。您可以按如下方式对其进行建模：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span>
+<span class="normal"><a href="#__codelineno-16-2">2</a></span>
+<span class="normal"><a href="#__codelineno-16-3">3</a></span>
+<span class="normal"><a href="#__codelineno-16-4">4</a></span>
+<span class="normal"><a href="#__codelineno-16-5">5</a></span>
+<span class="normal"><a href="#__codelineno-16-6">6</a></span>
+<span class="normal"><a href="#__codelineno-16-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="k">struct</span><span class="w"> </span><span class="nc">Journal</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2"></a><span class="p">{</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="w">   </span><span class="n">string</span><span class="w"> </span><span class="n">title</span><span class="p">;</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4"></a><span class="w">   </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">entries</span><span class="p">;</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5"></a>
+<a id="__codelineno-16-6" name="__codelineno-16-6"></a><span class="w">   </span><span class="k">explicit</span><span class="w"> </span><span class="n">Journal</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">title</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">title</span><span class="p">{</span><span class="n">title</span><span class="p">}</span><span class="w"> </span><span class="p">{}</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7"></a><span class="p">};</span>
+</code></pre></div></td></tr></table></div>
+<p>现在，您可以添加用于将添加到日志中的功能，并以日记中的条目序号为前缀。这很容易：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span>
+<span class="normal"><a href="#__codelineno-17-2">2</a></span>
+<span class="normal"><a href="#__codelineno-17-3">3</a></span>
+<span class="normal"><a href="#__codelineno-17-4">4</a></span>
+<span class="normal"><a href="#__codelineno-17-5">5</a></span>
+<span class="normal"><a href="#__codelineno-17-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">Journal::add</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">entry</span><span class="p">)</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2"></a><span class="p">{</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="w">   </span><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4"></a><span class="w">   </span><span class="n">entries</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">boost</span><span class="o">::</span><span class="n">lexical_cast</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="n">count</span><span class="o">++</span><span class="p">)</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5"></a><span class="w">      </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">entry</span><span class="p">);</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>因为添加一条日记条目是日记实际上需要做的事情，所以将此函数作为 Journal 类的一部分是有意义的。这是日记的责任来保持条目，所以，与这相关的任何事情都是公平的游戏。</p>
+<p>现在，假设您决定通过将日记保存在文件中而保留该日记。您需要将此代码添加到 Journal 类：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span>
+<span class="normal"><a href="#__codelineno-18-2">2</a></span>
+<span class="normal"><a href="#__codelineno-18-3">3</a></span>
+<span class="normal"><a href="#__codelineno-18-4">4</a></span>
+<span class="normal"><a href="#__codelineno-18-5">5</a></span>
+<span class="normal"><a href="#__codelineno-18-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">Journal::save</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">filename</span><span class="p">)</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2"></a><span class="p">{</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3"></a><span class="w">    </span><span class="n">ofstream</span><span class="w"> </span><span class="n">ofs</span><span class="p">(</span><span class="n">filename</span><span class="p">);</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">entries</span><span class="p">)</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5"></a><span class="w">        </span><span class="n">ofs</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>这种方法是有问题的。日志的责任是保存日志条目，而不是把它们写道磁盘上。如果您将磁盘写入功能添加到 Journal 和类似类中，持久化方法中的任何更改（例如，您决定向云写入而不是磁盘），都将在每个受影响的类中需要进行大量的微小的更改。</p>
+<div class="admonition warning">
+<p class="admonition-title">注意</p>
+<p>在一个架构中，不得不在大量的类中做很多微小的更改，无论是否相关，通常都是一种代码气味(code smell)，这意味着这个设计可能不够好。</p>
+</div>
 
 
 
@@ -1931,7 +2134,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-12T11:51:55+08:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-12</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-16T12:56:49+08:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-16</span>
   </span>
 
     
@@ -1946,29 +2149,6 @@
 
     
     
-    
-      
-  <span class="md-source-file__fact">
-    
-      
-  <span class="md-icon" title="贡献者">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/></svg>
-  </span>
-  <span>GitHub</span>
-
-    
-    <nav>
-      
-        <a href="https://github.com/T-muran" class="md-author" title="@T-muran">
-          
-          <img src="https://avatars.githubusercontent.com/u/104000557?v=4&size=72" alt="T-muran">
-        </a>
-      
-      
-      
-    </nav>
-  </span>
-
     
   </aside>
 

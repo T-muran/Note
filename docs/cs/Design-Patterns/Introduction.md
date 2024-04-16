@@ -68,7 +68,7 @@ comments: true
 
 ## 设计模式六大原则
 
-1. 开闭原则（Open Close Principle || OCP）
+### 开闭原则（Open Close Principle || OCP）
 
 !!! note "主要思想"
 
@@ -140,21 +140,148 @@ comments: true
    ```cpp
    template <typename T> struct Specification
    {
-       virtual bool is_satisfied(T* item) = 0;
+      virtual bool is_satisfied(T* item) = 0;
    };
    ```
 
 在前面的示例中，类型 T 是我们选择的任何类型：它当然可以是一个 Product，但也可以是其它东西。这使得整个方法可重复使用。
 
-接下来，我们需要一种基于 Specification<T> 的过滤方法：你猜到的，这是通过定义完成，一个 Filter<T>：
+接下来，我们需要一种基于 `Specification<T>` 的过滤方法：你猜到的，这是通过定义完成，一个 `Filter<T>`：
 
    ```cpp
    template <typename T> struct Filter
    {
-       virtual vector<T*> filter(
-       	vector<T*> items,
-       	Specification<T>& spec) = 0;
+      virtual vector<T*> filter(
+      vector<T*> items,
+      Specification<T>& spec) = 0;
    };
    ```
 
-同样的，我们所做的就是为一个名为 filter 的函数指定签名，该函数接受所有项目和一个规范，并返回符合规范的所有项目。假设这些项目被存储为 vector<T*>，但实际上，你可以向 filter() 传递，或者是一对迭代器，或者是一些专门为遍历集合而设计的定制接口。遗憾的是，C++ 语言未能标准化枚举或集合的概念，这是存在于其它编程语言（例如，.NET 的 IEnumerable）中的东西。
+同样的，我们所做的就是为一个名为 filter 的函数指定签名，该函数接受所有项目和一个规范，并返回符合规范的所有项目。假设这些项目被存储为 vector<T*>，但实际上，你可以向 filter() 传递一对迭代器，或者是一些专门为遍历集合而设计的定制接口。遗憾的是，C++ 语言未能标准化枚举或集合的概念，这是存在于其它编程语言（例如，.NET 的 IEnumerable）中的东西。
+
+基于前述，改进的过滤器的实现非常的简单：
+
+   ```cpp
+   struct BetterFilter : Filter<Product>
+   {
+      vector<Product*> filter(
+         vector<Product*> items,
+         Specification<Product>& spec) override
+      {
+         vector<Product*> result;
+         for (auto& p : items)
+            if (spec.is_satisfied(p))
+               result.push_back(p);
+         return result;
+      }
+   };
+   ```
+
+可以看到 `Specification<T>`，该规范被传入作为 std::function 的强类型化等效项，该函数仅约束到一定数量的可能的筛选规格。
+
+现在，我们可以定义规范，制作一个颜色过滤器，例如：
+
+   ```cpp
+   struct ColorSpecification : Specification<Product>
+   {
+      Color color;
+      explicit ColorSpecification(const Color color)
+         : color{color}
+      {
+      }
+      bool is_satisfied(Product* item) override
+      {
+         return item->color == color;
+      }
+   };
+   ```
+
+为了添加一个按尺寸过滤的功能，我们需要一个复合规范:
+
+   ```cpp
+   template <typename T> struct AndSpecification :
+   Specification<T>
+   {
+   Specification<T>& first;
+   Specification<T>& second;
+
+   AndSpecification(Specification<T>& first,Specification<T>& second)
+   : first{first}, second{second} {}
+
+   bool is_satisfied(T* item) override
+   {
+   return first.is_satisfied(item) && second.is_satisfied(item);
+   }
+   };
+   ```
+
+这里有很多代码！但是请记住，由于 C++ 的强大功能，你可以简单地引入一个 operator && 用于两个 `Specification<T>` 对象，从而使得过滤过程由两个（或更多！）标准，极为简单：
+
+   ```cpp
+   template <typename T> struct Specification
+   {
+      virtual bool is_satisfied(T* item) = 0;
+      
+      AndSpecification<T> operator &&(Specification&& other)
+      {
+         return AndSpecification<T>(*this, other);
+      }
+   };
+   ```
+
+如果你现在避免为尺寸/颜色规范设置额外的变量，则可以将复合规范简化为一行：
+
+   ```cpp
+   auto green_and_big =ColorSpecification(Color::Green)&& SizeSpecification(Size::Large);
+   ```
+
+因此，让我们回顾以下 OCP 原则是声明，以及前面的示例是如何执行它的。基本上，OCP 声明你不需要返回你已经编写和测试过的代码，并对其进行更改。这正是这里发生的！我们制定了 `Specification<T>` 和 `Filter<T>`，从那时起，我们所要做的就是实现任何一个接口（不需要修改接口本身）来实现新的过滤机制。这就是“开放供扩展，封闭供修改”的意思。
+
+### 单一职责原则（Single Responsibility Principle || SRP）
+
+!!! note "主要思想"
+
+    单一职责原则表示一个模块的组成元素之间的功能相关性。从软件变化的角度来看，就一个类而言，应该仅有一个让它变化的原因；通俗地说，即一个类只负责一项职责。
+
+假设您决定把您最私密的想法记在日记里。日记具有一个标题和多个条目。您可以按如下方式对其进行建模：
+
+   ```cpp
+   struct Journal
+   {
+      string title;
+      vector<string> entries;
+      
+      explicit Journal(const string& title) : title{title} {}
+   };
+   ```
+
+现在，您可以添加用于将添加到日志中的功能，并以日记中的条目序号为前缀。这很容易：
+
+   ```cpp
+   void Journal::add(const string& entry)
+   {
+      static int count = 1;
+      entries.push_back(boost::lexical_cast<string>(count++)
+         + ": " + entry);
+   }
+   ```
+
+因为添加一条日记条目是日记实际上需要做的事情，所以将此函数作为 Journal 类的一部分是有意义的。这是日记的责任来保持条目，所以，与这相关的任何事情都是公平的游戏。
+
+现在，假设您决定通过将日记保存在文件中而保留该日记。您需要将此代码添加到 Journal 类：
+
+```cpp
+void Journal::save(const string& filename)
+{
+    ofstream ofs(filename);
+    for (auto& s : entries)
+        ofs << s << endl;
+}
+```
+
+这种方法是有问题的。日志的责任是保存日志条目，而不是把它们写道磁盘上。如果您将磁盘写入功能添加到 Journal 和类似类中，持久化方法中的任何更改（例如，您决定向云写入而不是磁盘），都将在每个受影响的类中需要进行大量的微小的更改。
+
+!!! warning "注意"
+
+    在一个架构中，不得不在大量的类中做很多微小的更改，无论是否相关，通常都是一种代码气味(code smell)，这意味着这个设计可能不够好。
+
