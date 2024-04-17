@@ -66,7 +66,7 @@ comments: true
    p.age = 20;
    ```
 
-## 设计模式六大原则
+## 设计模式SOLID原则
 
 ### 开闭原则（Open Close Principle || OCP）
 
@@ -364,6 +364,7 @@ void Journal::save(const string& filename)
    Square s{5};
    process(s); // 期望 area = 50, 实际获得 100
    ```
+
 这个例子中，process() 完全不能接受派生类型 Square 而不是基类型 Rectangle，从而破坏了 LSP 原则。如果你给它一个 Rectangle，一切都很好，所以它可能需要一些时间才能出现在你的测试（或者生产，希望不是！）。
 
 解决办法是什么呢？嗯，有很多。就我个人而言，我认为类型 Square 甚至不应该存在：相反，我们可以创建一个工厂来创建矩形和正方形：
@@ -377,3 +378,111 @@ void Journal::save(const string& filename)
    ```
 
 ### 依赖倒置原则（Dependency Inversion Principle || DIP）
+
+!!! note "主要思想"
+
+    依赖倒置原则是指高层模块不应该依赖于底层模块，二者都应该依赖于抽象；抽象不应该依赖于细节，细节应该依赖于抽象。
+
+例如，如果你对日志记录感兴趣，你的报告组件不应该依赖于具体的 ConsoleLogger，而是可以依赖于 ILogger 接口。在这种情况下，我们认为报告组件是高级别的（更接近业务领域），而日志记录则是一个基本的关注点（类似于文件 I/O 或线程，但不是），被认为是一个低级别的模块。
+
+其次接口或基类上的依赖比依赖于具体的类型更好。希望这个语句的真实性是显而易见的，因为这种方法支持更好的可配置性和可测试性——前提是你使用了一个良好的框架来处理这些依赖关系。
+
+所以，现在的主要问题是：你是如何真正实现上述所有的？这确实需要更多的工作，因为现在你需要明确说明，例如，Reporting 依赖于 ILogger。如下所示：
+
+   ```cpp
+   class Reporting
+   {
+      ILogger& logger;
+   public:
+      Reporting(const ILogger& logger) : logger{logger} {}
+      void prepare_report()
+      {
+         logger.log_info("Preparing the report");
+         ...
+      }
+   };
+   ```
+
+要初始化前面的类，你需要显式地调用 `Reporting{ConsoleLogger{}}` 或类似地东西。如果 Reporting 依赖于五个不同的接口呢？如果 ConsoleLogger 有自己的依赖项，又怎么办？你可以通过编写大量的代码来管理这个问题，但是这里有一个更好的方法。
+
+针对前面的现代、流行、时尚的做法是使用依赖注入（Dependency Injection）：这基本上意味着你要使用诸如 Boost.DI之类的库自动满足特定组件的依赖关系的要求。
+
+### 接口隔离原则（Interface Segregation Principle || ISP）
+
+!!! note "主要思想"
+
+    接口隔离原则是指客户端不应该被迫依赖于它们不使用的接口。这意味着一个类应该有尽可能少的接口，而不是一个类应该有尽可能多的接口。
+
+假设你决定定义一个多功能打印机：该设备可以打印、扫描和传真文档。因此，你可以定义如下：
+
+   ```cpp
+   struct MyFavouritePrinter /* : IMachine */
+   {
+      void print(vector<Document*> docs) override;
+      void fax(vector<Document*> docs) override;
+      void scan(vector<Document*> docs) override;
+   };
+   ```
+
+这很好。现在，假设你决定定义一个需要由所有计划制造多功能打印机的人实现的接口。因此，你可以在你最喜欢的 IDE 中使用提取接口函数功能，你可以得到如下内容：
+
+   ```cpp
+   struct IMachine
+   {
+      virtual void print(vector<Document*> docs) = 0;
+      virtual void fax(vector<Document*> docs) = 0;
+      virtual void scan(vector<Document*> docs) = 0;
+   };
+   ```
+
+这里有一个问题。原因是这个接口的一些实现者可能不需要扫描或传真，只需要打印。然而，你强迫他们实现这些额外的功能：当然，它们可以都是无操作的，但为什么要这么做呢？
+
+因此，ISP 的建议是将接口分开，以便于实现者可以根据他们的需求进行挑选和选择。由于打印和扫描是不同的操作（例如，扫描仪不能打印），我们为这些操作定义了不同的接口：
+
+   ```cpp
+   struct IPrinter
+   {
+      virtual void print(vector<Document*> docs) = 0;
+   };
+
+   struct IScanner
+   {
+      virtual void scan(vector<Document*> docs) = 0;
+   };
+   ```
+
+现在，如果我们真的想要一个 IMachine 接口，我们可以将它定义为上述接口的组合：
+
+   ```cpp
+   struct IMachine : IPrinter, IScanner /* IFax and so on */
+   {  
+   };
+   ```
+
+当你在具体的多功能设备中实现这个接口时，这就是要使用的接口。例如，你可以使用简单的委托来确保 Machine 重用特定 IPrinter 和 IScanner 提供的功能：
+
+   ```cpp
+   struct Machine : IMachine
+   {
+      IPrinter& printer;
+      IScanner& scanner;
+      
+      Machine(IPrinter& printer, IScanner& scanner)
+         : printer{printer},
+         scanner{scanner}
+      {
+      }
+      
+      void print(vector<Document*> docs) override
+      {
+         printer.print(docs);
+      }
+      
+      void scan(vector<Document*> docs) override
+      {
+         scanner.scan(docs);
+      }
+   };
+   ```
+
+因此，简单地说，这里的想法是将复杂接口的部分分隔成单独的接口，以避免迫使实现者实现他们并不真正需要的功能。当为某些复杂的应用程序编写插件时，如果你得到一个具有 20 个令人困惑的函数的接口，用于实现各种 no-ops 和 return nullptr 时，说不定是 API 作者违反了 ISP 原则。
