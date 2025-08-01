@@ -2,5 +2,4 @@
 /.vscode/
 /venv/
 __pycache__/
-/site/
 /overrides/
