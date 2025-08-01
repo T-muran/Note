@@ -105,15 +105,10 @@ extra:
     - name: GitHub
       icon: fontawesome/brands/github
       link: https://github.com/T-muran
-    - name: Telegram
-      icon: fontawesome/brands/telegram
-      link: 
     - name: Mail
       icon: fontawesome/solid/envelope
       link: mailto:tangmuransama@gmail.com
-    - name: Blog RSS
-      icon: fontawesome/solid/square-rss
-      link: 
+
   tags: { "": default }
 
 plugins:
@@ -185,37 +180,33 @@ extra_css:
 nav:
   - index.md
   - 网站资源: websiteRes.md
-  - 个人博客: 
-    - blog/index.md
-  - RSS 阅读:
-    - news/index.md
-  - 基础学科: 
+  - 数学: 
     - 高等数学: 
-      - 极限与连续: basic/Advanced-Mathematics/Limit-Continuous.md
+      - 极限与连续: Math/Advanced-Mathematics/Limit-Continuous.md
   - 计算机:
     - 编程语言: 
       - C/C++: 
         - STL 相关: 
-          - STL基础: cs/Language/C-CPP/STL/STL-base.md
+          - STL基础: CS/Language/C-CPP/STL/STL-base.md
       - C#: 
-        - 代码规范: cs/Language/CSharp/Coding-Convention.md  
+        - 代码规范: CS/Language/CSharp/Coding-Convention.md  
     - 数据结构与算法: 
-      - 学习资料: cs/Algorithms/res.md
+      - 学习资料: CS/Algorithms/res.md
       - 搜索:
-        - DFS-搜索: cs/Algorithms/Search/DFS-Search.md
+        - DFS-搜索: CS/Algorithms/Search/DFS-Search.md
       - 动态规划:
-        - 记忆化搜索: cs/Algorithms/Dynamic-Programming/Memorization-Search.md
+        - 记忆化搜索: CS/Algorithms/Dynamic-Programming/Memorization-Search.md
       - 数据结构: 
-        - 并查集: cs/Algorithms/Data-Structure/Union-Find.md
+        - 并查集: CS/Algorithms/Data-Structure/Union-Find.md
       - 图论: 
-        - 最短路径: cs/Algorithms/Graph-Theory/Shortest-Path.md
+        - 最短路径: CS/Algorithms/Graph-Theory/Shortest-Path.md
     - 计算机图形学:
       - OpenGL: 
-        - 深度测试: cs/Cg/OpenGL/Depth-Testing.md
-        - 模板测试: cs/Cg/OpenGL/Stencil-Testing.md 
-        - 混合: cs/Cg/OpenGL/Blending.md
+        - 深度测试: CS/Cg/OpenGL/Depth-Testing.md
+        - 模板测试: CS/Cg/OpenGL/Stencil-Testing.md 
+        - 混合: CS/Cg/OpenGL/Blending.md
     - 设计模式:
-      - 简介: cs/Design-Patterns/Introduction.md
-      - 创建型模式: cs/Design-Patterns/Creational.md
-      - 结构型模式: cs/Design-Patterns/Structural.md
-      - 行为型模式: cs/Design-Patterns/Behavioral.md
+      - 简介: CS/Design-Patterns/Introduction.md
+      - 创建型模式: CS/Design-Patterns/Creational.md
+      - 结构型模式: CS/Design-Patterns/Structural.md
+      - 行为型模式: CS/Design-Patterns/Behavioral.md
