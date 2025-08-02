@@ -186,6 +186,7 @@ nav:
       # - 微分学: 
       - 积分学: 
         - 高斯积分: Math/Integral-Calculus/Gaussian-Integral.md
+        - 拉格朗日乘子法: Math/Integral-Calculus/Lagrange-Multipliers.md
   - 计算机:
     - 编程语言: 
       - C/C++: 
