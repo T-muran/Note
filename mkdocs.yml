@@ -184,9 +184,9 @@ nav:
     - 高等数学: 
       - 极限与连续: Math/Advanced-Mathematics/Limit-Continuous.md
       - 微分学: 
-        - 拉格朗日乘子法: Math/Integral-Calculus/Lagrange-Multipliers.md
+        - 拉格朗日乘子法: Math/Advanced-Mathematics/Integral-Calculus/Lagrange-Multipliers.md
       - 积分学: 
-        - 高斯积分: Math/Integral-Calculus/Gaussian-Integral.md
+        - 高斯积分: Math/Advanced-Mathematics/Integral-Calculus/Gaussian-Integral.md
   - 计算机:
     - 编程语言: 
       - C/C++: 
