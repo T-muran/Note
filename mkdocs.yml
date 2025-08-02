@@ -183,6 +183,8 @@ nav:
   - 数学: 
     - 高等数学: 
       - 极限与连续: Math/Advanced-Mathematics/Limit-Continuous.md
+      # - 微分学: 
+      - 积分学: Math/Integral-Calculus/Gauss-Integral.md
   - 计算机:
     - 编程语言: 
       - C/C++: 
