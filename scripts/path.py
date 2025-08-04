@@ -77,6 +77,7 @@ def on_files(files: Files, config: MkDocsConfig):
 
     for f in files:
         path_names = f.src_uri.split('/')
+        log.info('Processing %s', f.src_uri)
 
         # 忽略 obsidian-vault 文件夹以外的文件；路径中至少有一个斜杠，所以长度至少为 2
         if len(path_names) < 2 or path_names[0] != FOLDER_MD_VAULT:
@@ -99,7 +100,7 @@ def on_files(files: Files, config: MkDocsConfig):
         wiki_link_path_map[f.src_uri] = FileLinkList(f)
 
     notes_sorted_by_date.sort(key=lambda f: f.note_date, reverse=True)
-    log.info('Found %d valid Obsidian documents', len(notes_sorted_by_date))
+    log.info('Found %d valid documents', len(notes_sorted_by_date))
 
     for f in invalid_files:
         files.remove(f)
