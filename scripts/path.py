@@ -223,3 +223,143 @@ def on_nav(nav: Navigation, config: MkDocsConfig, files: Files):
     nav.items.extend(others)
     nav.items.extend(sections)
     return nav
+
+    def transform_wiki_links(markdown: str, page: Page, config: MkDocsConfig) -> str:
+    link_list = wiki_link_path_map.get(page.file.src_uri)
+
+    if link_list is not None:
+        assert (link_list.file == page.file)
+        link_list.clear_links() # 重新解析链接
+
+    def recordLink(target_file: File):
+        if link_list is None or target_file.src_uri in link_list.links:
+            return
+
+        node = FileLinkNode(page.file)
+        link_list.links[target_file.src_uri] = node
+        node.insert_after(wiki_link_path_map[target_file.src_uri].inverse_links)
+
+    def repl(m: re.Match[str]):
+        is_media = m.group(1) is not None
+
+        # [[name#heading|alias]]
+        # 在表格中使用 wiki link 时，需要用 '\\|' 代替 '|'，这里去掉 '\\'
+        m2 = re.match(r'^(.+?)(#(.*?))?(\|(.*))?$', m.group(2).replace('\\', ''), flags=re.U)
+        name = m2.group(1).strip()
+        heading = m2.group(3)
+        alias = m2.group(5)
+
+        # 自动给文档加 .md 后缀名
+        if not is_media and (name + '.md') in wiki_link_name_map:
+            name += '.md'
+
+        if heading:
+            heading = heading.strip()
+        if alias:
+            alias = alias.strip()
+
+        if name.count('/') == 0 and name in wiki_link_name_map:
+            # name 是一个文件名
+            md_link = wiki_link_name_map[name].src_uri
+        else:
+            # name 是一个文件路径，先展开为绝对路径
+            abs_path = posixpath.normpath(posixpath.join(posixpath.dirname(page.file.src_uri), name))
+
+            if abs_path in wiki_link_path_map:
+                md_link = wiki_link_path_map[abs_path].file.src_uri
+            else:
+                md_link = abs_path
+
+        # 记录反向链接
+        if not is_media:
+            if md_link in wiki_link_path_map:
+                recordLink(wiki_link_path_map[md_link].file)
+            else:
+                log.warning('Failed to resolve link \'%s\' in \'%s\'', md_link, page.file.src_uri)
+
+        # 改成文件的相对路径，这样要是链接找不到了 MkDocs 会在控制台警告
+        md_link = get_relative_url(md_link, page.file.src_uri)
+        title = posixpath.splitext(posixpath.basename(name))[0] # 标题不要后缀名
+
+        if heading:
+            # 根据 toc 配置，生成 heading 的 id
+            # https://python-markdown.github.io/extensions/toc/
+            toc_config = config.mdx_configs['toc']
+            heading_id = toc_config['slugify'](heading, toc_config.get('separator', '-'))
+            md_link += f'#{heading_id}'
+
+        if alias:
+            display_name = alias
+        elif heading:
+            display_name = f'{title} > {heading}'
+        else:
+            display_name = title
+
+        return ('!' if is_media else '') + f'[{display_name}]({md_link})'
+
+    # 匹配链接内容时必须用惰性匹配，否则会把多个链接内容合并在一起
+    return re.sub(r'(!)?\[\[(.*?)\]\]', repl, markdown, flags=re.M|re.U)
+
+def transform_callouts(markdown: str, page: Page, config: MkDocsConfig) -> str:
+    # 把 Obsidian 的 Callouts 转换为 Python Markdown Callouts 拓展的格式
+    # https://help.obsidian.md/Editing+and+formatting/Callouts
+    # https://oprypin.github.io/markdown-callouts/index.html
+
+    def repl(m: re.Match[str]):
+        callout_type = m.group(1)
+        fold = (m.group(2) or '').translate(str.maketrans('+-', '!?'))
+        title = m.group(3).strip()
+
+        ans = f'>{fold} {callout_type.upper()}:'
+        if len(title) > 0:
+            ans += f' **{title}**'
+        return ans
+
+    # \s 会匹配换行符，所以改用 [^\S\r\n]
+    return re.sub(r'^[^\S\r\n]*>[^\S\r\n]*\[!(.+?)\]([+-])?(.*)$', repl, markdown, flags=re.M|re.U)
+
+def insert_recent_note_links(markdown: str) -> str:
+    content = ''
+    for f in notes_sorted_by_date[:10]:
+        title = html.escape(posixpath.splitext(posixpath.basename(f.src_uri))[0]) # 标题不要后缀名
+        date = html.escape(f.note_date.strftime('%Y-%m-%d'))
+        content += f'- <div class="recent-notes"><a href="{f.page.abs_url}">{title}</a><small>{date}</small></div>\n'
+    return markdown.replace('<!-- RECENT NOTES -->', content)
+
+def insert_num_notes(markdown: str) -> str:
+    num_notes = len(notes_sorted_by_date)
+    return markdown.replace('<!-- NUM NOTES -->', str(num_notes))
+
+def on_page_markdown(markdown: str, page: Page, config: MkDocsConfig, files: Files):
+    markdown = transform_wiki_links(markdown, page, config)
+    markdown = transform_callouts(markdown, page, config)
+    if page.is_homepage:
+        markdown = insert_recent_note_links(markdown) # 最新文章的链接不计入反向链接
+        markdown = insert_num_notes(markdown)
+    return markdown
+
+# 在 minify 之前执行
+@event_priority(50)
+def on_post_page(output: str, page: Page, config: MkDocsConfig):
+    link_list = wiki_link_path_map.get(page.file.src_uri)
+    if link_list is None:
+        return
+
+    assert (link_list.file == page.file)
+
+    # 获取并排序反向链接
+    inverse_link_files: list[File] = []
+    head = link_list.inverse_links # 注意有个头结点
+    while head.next != None:
+        inverse_link_files.append(head.next.file)
+        head = head.next
+    if len(inverse_link_files) <= 0:
+        return
+    inverse_link_files.sort(key=lambda f: get_str_sort_key(f.page.title))
+
+    links_html = r'<details class="tip" style="margin-top:0"><summary>反向链接</summary><ul>'
+    for link_file in inverse_link_files:
+        href = get_relative_url(link_file.page.abs_url, page.abs_url)
+        links_html += rf'<li><a href="{href}">{html.escape(link_file.page.title)}</a></li>'
+    links_html += r'</ul></details><br>'
+    return re.sub(r'<article class=".*?">', rf'\g<0>{links_html}', output, count=1)
