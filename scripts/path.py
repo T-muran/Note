@@ -155,3 +155,71 @@ def on_files(files: Files, config: MkDocsConfig):
         files.remove(f)
 
     return files
+
+def find_obsidian_root(nav: Navigation) -> Section:
+    for item in nav.items:
+        if isinstance(item, Section) and item.title.lower().count('obsidian') > 0:
+            return item
+    raise Exception('Obsidian vault not found in navigation')
+
+def get_str_sort_key(s: str):
+    start_with_english = s[0] in ascii_letters
+
+    # 把中文变成拼音（无音调），不是中文的部分保留
+    pinyin = pypinyin.lazy_pinyin(s, style=pypinyin.Style.NORMAL, errors='default', v_to_u=False)
+
+    # 按照 obsidian 的风格，以英文开头的内容排在中文开头的后面，不区分大小写
+    return (start_with_english, ''.join(pinyin).lower())
+
+@event_priority(-100) # 放在最后执行
+def on_nav(nav: Navigation, config: MkDocsConfig, files: Files):
+    def get_entry_key(entry):
+        # obsidian 目录下面只有 Page 和 Section
+        if isinstance(entry, Page):
+            # Page 对应 markdown 文件
+            # 此时 markdown 还没解析，title 是 None，使用文件名代替
+            key = entry.file.name
+        else:
+            # Section 对应文件夹，直接用 title 即可
+            key = entry.title
+        return get_str_sort_key(key)
+
+    def dfs_sort(entry):
+        if getattr(entry, 'children', None) is None:
+            return
+
+        files = []
+        folders = []
+
+        for child in entry.children:
+            dfs_sort(child)
+
+            if isinstance(child, Page):
+                files.append(child)
+            else:
+                folders.append(child)
+
+        files.sort(key=get_entry_key)
+        folders.sort(key=get_entry_key)
+        entry.children = folders + files # 文件夹放在文件前面
+
+    obsidian_root = find_obsidian_root(nav)
+    obsidian_root.title = 'Notes'
+
+    # 将下面的文章重新排序
+    dfs_sort(obsidian_root)
+
+    sections = []
+    others = []
+
+    for item in nav.items:
+        if isinstance(item, Section):
+            sections.append(item)
+        else:
+            others.append(item)
+
+    # 将 sections 放在后面
+    nav.items.clear()
+    nav.items.extend(others)
+    nav.items.extend(sections)
+    return nav
