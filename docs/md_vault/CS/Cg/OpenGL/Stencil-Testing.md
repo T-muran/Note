@@ -1,5 +1,9 @@
 ---
+date: 2025-01-24T00:00:00
+publish: true
 comments: true
+permalink: Stencil-Testing
+name: 模板测试
 ---
 
 # 模板测试
