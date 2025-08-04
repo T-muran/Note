@@ -72,7 +72,8 @@ name: 设计模式概念
 
 ## 设计模式SOLID原则
 
-### 开闭原则（Open Close Principle || OCP）
+### 开闭原则
+>（Open Close Principle || OCP）
 
 !!! note "主要思想"
 
@@ -241,7 +242,8 @@ name: 设计模式概念
 
 因此，让我们回顾以下 OCP 原则是声明，以及前面的示例是如何执行它的。基本上，OCP 声明你不需要返回你已经编写和测试过的代码，并对其进行更改。这正是这里发生的！我们制定了 `Specification<T>` 和 `Filter<T>`，从那时起，我们所要做的就是实现任何一个接口（不需要修改接口本身）来实现新的过滤机制。这就是“开放供扩展，封闭供修改”的意思。
 
-### 单一职责原则（Single Responsibility Principle || SRP）
+### 单一职责原则
+>（Single Responsibility Principle || SRP）
 
 !!! note "主要思想"
 
@@ -305,7 +307,8 @@ void Journal::save(const string& filename)
 
 这正是单一责任（Single Responsibility）的含义：每个类只有一个责任，因此，只有一个改变的理由。只有在需要对条目的存储做更多工作的情况下，Journal 才需要更改。例如，你可能希望每个条目都以时间戳为前缀，因此，你将更改 add() 函数来实现这一点。从另一方面来说，如果你要更改持久化机制，这将在 PersistenceManager 中进行更改。
 
-### 里氏替换原则（Liskov Substitution Principle || LSP）
+### 里氏替换原则
+>（Liskov Substitution Principle || LSP）
 
 !!! note "主要思想"
 
@@ -381,7 +384,8 @@ void Journal::save(const string& filename)
    };
    ```
 
-### 依赖倒置原则（Dependency Inversion Principle || DIP）
+### 依赖倒置原则
+>（Dependency Inversion Principle || DIP）
 
 !!! note "主要思想"
 
@@ -411,7 +415,8 @@ void Journal::save(const string& filename)
 
 针对前面的现代、流行、时尚的做法是使用依赖注入（Dependency Injection）：这基本上意味着你要使用诸如 Boost.DI之类的库自动满足特定组件的依赖关系的要求。
 
-### 接口隔离原则（Interface Segregation Principle || ISP）
+### 接口隔离原则
+>（Interface Segregation Principle || ISP）
 
 !!! note "主要思想"
 
