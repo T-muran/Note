@@ -156,7 +156,7 @@ def on_files(files: Files, config: MkDocsConfig):
 
     return files
 
-def find_obsidian_root(nav: Navigation) -> Section:
+def find_md_root(nav: Navigation) -> Section:
     for item in nav.items:
         if isinstance(item, Section) and item.title.lower().count('md') > 0:
             return item
@@ -174,7 +174,7 @@ def get_str_sort_key(s: str):
 @event_priority(-100) # 放在最后执行
 def on_nav(nav: Navigation, config: MkDocsConfig, files: Files):
     def get_entry_key(entry):
-        # obsidian 目录下面只有 Page 和 Section
+        # md 目录下面只有 Page 和 Section
         if isinstance(entry, Page):
             # Page 对应 markdown 文件
             # 此时 markdown 还没解析，title 是 None，使用文件名代替
@@ -203,11 +203,11 @@ def on_nav(nav: Navigation, config: MkDocsConfig, files: Files):
         folders.sort(key=get_entry_key)
         entry.children = folders + files # 文件夹放在文件前面
 
-    obsidian_root = find_obsidian_root(nav)
-    obsidian_root.title = 'Notes'
+    md_root = find_md_root(nav)
+    md_root.title = 'Notes'
 
     # 将下面的文章重新排序
-    dfs_sort(obsidian_root)
+    dfs_sort(md_root)
 
     sections = []
     others = []
