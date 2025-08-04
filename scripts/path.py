@@ -64,7 +64,17 @@ wiki_link_path_map: dict[str, FileLinkList] = {} # key 是 src_uri
 notes_sorted_by_date: list[File] = []            # 所有笔记，根据时间倒序保存
 log = logging.getLogger('mkdocs.plugins')
 
+def set_file_dest_uri(f: File, value: Union[str, Callable[[str], str]]):
+    f.dest_uri = value if isinstance(value, str) else value(f.dest_uri)
 
+    def delattr_if_exists(obj, attr):
+        if hasattr(obj, attr):
+            delattr(obj, attr)
+
+    # 删掉 cached_property 的缓存
+    delattr_if_exists(f, 'url')
+    delattr_if_exists(f, 'abs_dest_path')
+    
 def process_md_note(f: File) -> bool:
     _, frontmatter = meta.get_data(f.content_string)
 
