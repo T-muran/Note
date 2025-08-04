@@ -158,9 +158,9 @@ def on_files(files: Files, config: MkDocsConfig):
 
 def find_obsidian_root(nav: Navigation) -> Section:
     for item in nav.items:
-        if isinstance(item, Section) and item.title.lower().count('obsidian') > 0:
+        if isinstance(item, Section) and item.title.lower().count('md') > 0:
             return item
-    raise Exception('Obsidian vault not found in navigation')
+    raise Exception('md vault not found in navigation')
 
 def get_str_sort_key(s: str):
     start_with_english = s[0] in ascii_letters
