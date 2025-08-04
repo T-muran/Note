@@ -1,5 +1,9 @@
 ---
+date: 2025-01-21T17:50:35
+publish: true
 comments: true
+permalink: Blending
+name: 混合
 ---
 
 # 混合
@@ -13,7 +17,7 @@ OpenGL中，混合(Blending)通常是实现物体透明度(Transparency)的一�
 !!! tip "透明度"
     我们目前一直使用的纹理有三个颜色分量：红、绿、蓝。但一些材质会有一个内嵌的alpha通道，对每个纹素(Texel)都包含了一个alpha值。这个alpha值精确地告诉我们纹理各个部分的透明度。比如说，下面这个窗户纹理中的玻璃部分的alpha值为0.25（它在一般情况下是完全的红色，但由于它有75%的透明度，能让很大一部分的网站背景颜色穿过，让它看起来不那么红了），角落的alpha值是0.0。
 
-    ![透明纹理](/assets/images/CG/blending1.png)
+    ![[blending1|透明纹理]]
 
 ## 丢弃片段
 

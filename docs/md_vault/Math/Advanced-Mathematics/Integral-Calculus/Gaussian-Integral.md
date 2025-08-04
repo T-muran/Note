@@ -1,5 +1,5 @@
 ---
-date: 2025-7-21T17:50:35
+date: 2025-07-21T17:50:35
 publish: true
 comments: true
 permalink: Gaussian-Integral

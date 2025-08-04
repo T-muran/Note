@@ -1,5 +1,9 @@
 ---
+date: 2025-01-23T15:09:35
+publish: true
 comments: true
+permalink: Depth-Testing
+name: 深度测试
 ---
 
 # 深度测试
