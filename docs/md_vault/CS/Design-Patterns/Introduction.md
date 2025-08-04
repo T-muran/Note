@@ -3,7 +3,7 @@ date: 2025-03-01T00:00:00
 publish: true
 comments: true
 permalink: Introduction
-name: 设计模式
+name: 设计模式1111
 ---
 
 # 设计模式
