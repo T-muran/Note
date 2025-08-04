@@ -6,7 +6,7 @@ permalink: Introduction
 name: 设计模式概念
 ---
 
-# 设计模式123
+# 设计模式
 
 ## 一些C++的概念
 
