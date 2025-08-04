@@ -1,5 +1,8 @@
 ---
+date: 2024-11-21T17:50:35
+publish: true
 comments: true
+permalink: limit-continuous
 ---
 
 # 极限与连续

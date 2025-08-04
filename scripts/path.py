@@ -70,27 +70,27 @@ def process_md_note(f: File) -> bool:
 
     # 如果不发布的话，不进行后面的检查
     if not frontmatter.get('publish', False):
-        log.info('Obsidian document \'%s\' is not published, skipping', f.src_uri)
+        log.info('MD document \'%s\' is not published, skipping', f.src_uri)
         return False
 
     if 'date' not in frontmatter:
-        log.error('Obsidian document \'%s\' does not have a date', f.src_uri)
+        log.error('MD document \'%s\' does not have a date', f.src_uri)
         return False
 
     date = frontmatter['date']
 
     if not isinstance(date, datetime.datetime):
-        log.error('Obsidian document \'%s\' has an invalid date', f.src_uri)
+        log.error('MD document \'%s\' has an invalid date', f.src_uri)
         return False
 
     if 'permalink' not in frontmatter:
-        log.error('Obsidian document \'%s\' does not have a permalink', f.src_uri)
+        log.error('MD document \'%s\' does not have a permalink', f.src_uri)
         return False
 
     permalink = frontmatter['permalink']
 
     if not isinstance(permalink, str):
-        log.error('Obsidian document \'%s\' has an invalid permalink', f.src_uri)
+        log.error('MD document \'%s\' has an invalid permalink', f.src_uri)
         return False
 
     setattr(f, 'note_date', date)
