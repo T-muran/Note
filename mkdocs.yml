@@ -176,41 +176,44 @@ extra_css:
   - assets/stylesheets/theme.css
   - assets/stylesheets/feature.css
 
+hooks:
+  - scripts/path.py
 
-nav:
-  - index.md
-  - 网站资源: websiteRes.md
-  - 数学: 
-    - 高等数学: 
-      - 极限与连续: Math/Advanced-Mathematics/Limit-Continuous.md
-      - 微分学: 
-        - 拉格朗日乘子法: Math/Advanced-Mathematics/Integral-Calculus/Lagrange-Multipliers.md
-      - 积分学: 
-        - 高斯积分: Math/Advanced-Mathematics/Integral-Calculus/Gaussian-Integral.md
-  - 计算机:
-    - 编程语言: 
-      - C/C++: 
-        - STL 相关: 
-          - STL基础: CS/Language/C-CPP/STL/STL-base.md
-      - C#: 
-        - 代码规范: CS/Language/CSharp/Coding-Convention.md  
-    - 数据结构与算法: 
-      - 学习资料: CS/Algorithms/res.md
-      - 搜索:
-        - DFS-搜索: CS/Algorithms/Search/DFS-Search.md
-      - 动态规划:
-        - 记忆化搜索: CS/Algorithms/Dynamic-Programming/Memorization-Search.md
-      - 数据结构: 
-        - 并查集: CS/Algorithms/Data-Structure/Union-Find.md
-      - 图论: 
-        - 最短路径: CS/Algorithms/Graph-Theory/Shortest-Path.md
-    - 计算机图形学:
-      - OpenGL: 
-        - 深度测试: CS/Cg/OpenGL/Depth-Testing.md
-        - 模板测试: CS/Cg/OpenGL/Stencil-Testing.md 
-        - 混合: CS/Cg/OpenGL/Blending.md
-    - 设计模式:
-      - 简介: CS/Design-Patterns/Introduction.md
-      - 创建型模式: CS/Design-Patterns/Creational.md
-      - 结构型模式: CS/Design-Patterns/Structural.md
-      - 行为型模式: CS/Design-Patterns/Behavioral.md
+
+# nav:
+#   - index.md
+#   - 网站资源: websiteRes.md
+#   - 数学: 
+#     - 高等数学: 
+#       - 极限与连续: Math/Advanced-Mathematics/Limit-Continuous.md
+#       - 微分学: 
+#         - 拉格朗日乘子法: Math/Advanced-Mathematics/Integral-Calculus/Lagrange-Multipliers.md
+#       - 积分学: 
+#         - 高斯积分: Math/Advanced-Mathematics/Integral-Calculus/Gaussian-Integral.md
+#   - 计算机:
+#     - 编程语言: 
+#       - C/C++: 
+#         - STL 相关: 
+#           - STL基础: CS/Language/C-CPP/STL/STL-base.md
+#       - C#: 
+#         - 代码规范: CS/Language/CSharp/Coding-Convention.md  
+#     - 数据结构与算法: 
+#       - 学习资料: CS/Algorithms/res.md
+#       - 搜索:
+#         - DFS-搜索: CS/Algorithms/Search/DFS-Search.md
+#       - 动态规划:
+#         - 记忆化搜索: CS/Algorithms/Dynamic-Programming/Memorization-Search.md
+#       - 数据结构: 
+#         - 并查集: CS/Algorithms/Data-Structure/Union-Find.md
+#       - 图论: 
+#         - 最短路径: CS/Algorithms/Graph-Theory/Shortest-Path.md
+#     - 计算机图形学:
+#       - OpenGL: 
+#         - 深度测试: CS/Cg/OpenGL/Depth-Testing.md
+#         - 模板测试: CS/Cg/OpenGL/Stencil-Testing.md 
+#         - 混合: CS/Cg/OpenGL/Blending.md
+#     - 设计模式:
+#       - 简介: CS/Design-Patterns/Introduction.md
+#       - 创建型模式: CS/Design-Patterns/Creational.md
+#       - 结构型模式: CS/Design-Patterns/Structural.md
+#       - 行为型模式: CS/Design-Patterns/Behavioral.md
