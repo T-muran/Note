@@ -1,5 +1,9 @@
 ---
+date: 2025-03-01T00:00:00
+publish: true
 comments: true
+permalink: Introduction
+name: 设计模式概念
 ---
 
 # 设计模式
