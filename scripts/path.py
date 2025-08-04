@@ -102,7 +102,6 @@ def process_md_note(f: File) -> bool:
         return False
 
     permalink = frontmatter['permalink']
-    log.info('MD document %s ', frontmatter['name'])
 
     if not isinstance(permalink, str):
         log.error('MD document \'%s\' has an invalid permalink', f.src_uri)
