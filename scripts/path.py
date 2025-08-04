@@ -52,7 +52,7 @@ class FileLinkList(object):
             l.remove()
         self.links.clear()
 
-FOLDER_MD_VAULT = 'md-vault'
+FOLDER_MD_VAULT = 'md_vault'
 FOLDER_ATTACHMENT = 'attachments'
 FOLDER_BLACKLIST = {
     '临时',
