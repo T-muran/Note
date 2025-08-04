@@ -134,27 +134,27 @@ plugins:
         - blog/** 
         - news/** 
   - blog:
-      enabled: true
-      blog_toc: false 
-      archive: true
-      archive_toc: false 
-      archive_date_format: yyyy 年 MM 月
-      archive_url_date_format: yyyy/MM
-      categories: true
-      categories_toc: false
-      post_date_format: yyyy-MM-dd
-      post_readtime: true
-      post_readtime_words_per_minute: 180
-      post_url_format: "posts/{file}-{date}"
-      post_url_date_format: yyyy-MM-dd
-      post_excerpt: required
-      post_excerpt_max_authors: 0
-      authors: true
-      pagination: true
-      pagination_per_page: 10
-      pagination_format: "~2~"
-      pagination_if_single_page: true
-      pagination_keep_content: false
+      enabled: false
+      # blog_toc: false 
+      # archive: true
+      # archive_toc: false 
+      # archive_date_format: yyyy 年 MM 月
+      # archive_url_date_format: yyyy/MM
+      # categories: true
+      # categories_toc: false
+      # post_date_format: yyyy-MM-dd
+      # post_readtime: true
+      # post_readtime_words_per_minute: 180
+      # post_url_format: "posts/{file}-{date}"
+      # post_url_date_format: yyyy-MM-dd
+      # post_excerpt: required
+      # post_excerpt_max_authors: 0
+      # authors: true
+      # pagination: true
+      # pagination_per_page: 10
+      # pagination_format: "~2~"
+      # pagination_if_single_page: true
+      # pagination_keep_content: false
   - rss:
       match_path: blog/posts/.* 
       comments_path: "#__comments"
