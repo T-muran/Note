@@ -65,7 +65,42 @@ notes_sorted_by_date: list[File] = []            # 所有笔记，根据时间�
 log = logging.getLogger('mkdocs.plugins')
 
 
+def process_md_note(f: File) -> bool:
+    _, frontmatter = meta.get_data(f.content_string)
 
+    # 如果不发布的话，不进行后面的检查
+    if not frontmatter.get('publish', False):
+        log.info('Obsidian document \'%s\' is not published, skipping', f.src_uri)
+        return False
+
+    if 'date' not in frontmatter:
+        log.error('Obsidian document \'%s\' does not have a date', f.src_uri)
+        return False
+
+    date = frontmatter['date']
+
+    if not isinstance(date, datetime.datetime):
+        log.error('Obsidian document \'%s\' has an invalid date', f.src_uri)
+        return False
+
+    if 'permalink' not in frontmatter:
+        log.error('Obsidian document \'%s\' does not have a permalink', f.src_uri)
+        return False
+
+    permalink = frontmatter['permalink']
+
+    if not isinstance(permalink, str):
+        log.error('Obsidian document \'%s\' has an invalid permalink', f.src_uri)
+        return False
+
+    setattr(f, 'note_date', date)
+
+    if not f.use_directory_urls:
+        set_file_dest_uri(f, posixpath.join('p', permalink + '.html'))
+    else:
+        set_file_dest_uri(f, posixpath.join('p', permalink, 'index.html'))
+
+    return True
 
 @event_priority(100) # 放在最前面执行，不要处理其他插件生成的文件
 def on_files(files: Files, config: MkDocsConfig):
@@ -90,7 +125,7 @@ def on_files(files: Files, config: MkDocsConfig):
 
         if path_names[1] == FOLDER_ATTACHMENT:
             process_obsidian_attachment(f)
-        elif f.is_documentation_page() and process_obsidian_note(f):
+        elif f.is_documentation_page() and process_md_note(f):
             notes_sorted_by_date.append(f)
         else:
             invalid_files.append(f)
