@@ -74,7 +74,11 @@ def set_file_dest_uri(f: File, value: Union[str, Callable[[str], str]]):
     # 删掉 cached_property 的缓存
     delattr_if_exists(f, 'url')
     delattr_if_exists(f, 'abs_dest_path')
-    
+
+def process_md_attachment(f: File):
+    # 去掉 obsidian-vault
+    set_file_dest_uri(f, lambda uri: uri[uri.index(FOLDER_ATTACHMENT + '/'):])
+
 def process_md_note(f: File) -> bool:
     _, frontmatter = meta.get_data(f.content_string)
 
@@ -134,7 +138,7 @@ def on_files(files: Files, config: MkDocsConfig):
             continue
 
         if path_names[1] == FOLDER_ATTACHMENT:
-            process_obsidian_attachment(f)
+            process_md_attachment(f)
         elif f.is_documentation_page() and process_md_note(f):
             notes_sorted_by_date.append(f)
         else:
