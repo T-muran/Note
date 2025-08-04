@@ -186,8 +186,8 @@ def on_nav(nav: Navigation, config: MkDocsConfig, files: Files):
         if isinstance(entry, Page):
             # Page 对应 markdown 文件
             # 此时 markdown 还没解析，title 是 None，使用文件名代替
-            log.info('Page %s has no title, using filename: %s', entry.file.note_name, entry.file.name)
             if hasattr(entry.file, 'note_name'):
+                log.info(entry.file.note_name)
                 key = entry.file.note_name
             else:
                 # 如果意外没有 note_name，使用文件名（不带扩展名）
