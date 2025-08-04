@@ -107,6 +107,14 @@ def process_md_note(f: File) -> bool:
         log.error('MD document \'%s\' has an invalid permalink', f.src_uri)
         return False
 
+    # 存储 name 字段（如果存在）
+    name = frontmatter.get('name')
+    if not name or not isinstance(name, str):
+        # 如果没有提供 name，使用文件名（不带扩展名）作为备选
+        name = posixpath.splitext(posixpath.basename(f.src_uri))[0]
+        log.warning('MD document \'%s\' does not have a valid name, using filename: %s', f.src_uri, name)
+    
+    setattr(f, 'note_name', name)
     setattr(f, 'note_date', date)
 
     if not f.use_directory_urls:
@@ -178,7 +186,12 @@ def on_nav(nav: Navigation, config: MkDocsConfig, files: Files):
         if isinstance(entry, Page):
             # Page 对应 markdown 文件
             # 此时 markdown 还没解析，title 是 None，使用文件名代替
-            key = entry.file.name
+            if hasattr(entry.file, 'note_name'):
+                key = entry.file.note_name
+            else:
+                # 如果意外没有 note_name，使用文件名（不带扩展名）
+                key = posixpath.splitext(entry.file.name)[0]
+                log.warning('Page %s has no note_name, using filename: %s', entry.file.src_uri, key)
         else:
             # Section 对应文件夹，直接用 title 即可
             key = entry.title
