@@ -189,6 +189,7 @@ def on_nav(nav: Navigation, config: MkDocsConfig, files: Files):
             if hasattr(entry.file, 'note_name'):
                 log.info(entry.file.note_name)
                 key = entry.file.note_name
+                entry.file.title = key
             else:
                 # 如果意外没有 note_name，使用文件名（不带扩展名）
                 key = posixpath.splitext(entry.file.name)[0]
