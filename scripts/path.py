@@ -197,6 +197,8 @@ def on_nav(nav: Navigation, config: MkDocsConfig, files: Files):
         else:
             # Section 对应文件夹，直接用 title 即可
             key = entry.title
+            # TODO: 改变文件夹对应的title (引入JSON,将对应的值进行映射)
+            
         return get_str_sort_key(key)
 
     def dfs_sort(entry):
