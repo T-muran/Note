@@ -224,7 +224,7 @@ def on_nav(nav: Navigation, config: MkDocsConfig, files: Files):
     nav.items.extend(sections)
     return nav
 
-    def transform_wiki_links(markdown: str, page: Page, config: MkDocsConfig) -> str:
+def transform_wiki_links(markdown: str, page: Page, config: MkDocsConfig) -> str:
     link_list = wiki_link_path_map.get(page.file.src_uri)
 
     if link_list is not None:
