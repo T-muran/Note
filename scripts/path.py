@@ -75,7 +75,7 @@ def load_folder_name_map(config: MkDocsConfig):
     # 确定映射文件路径（在项目根目录）
     project_dir = os.path.dirname(config.config_file_path)
     json_path = os.path.join(project_dir, 'folder_names.json')
-    
+    log.info(f"Loading folder name map from {json_path}")
     # 尝试加载 JSON 文件
     if os.path.exists(json_path):
         try:
