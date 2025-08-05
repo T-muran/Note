@@ -4,6 +4,7 @@ import logging
 import posixpath
 import pypinyin
 import re
+import json
 
 from mkdocs.config.defaults import MkDocsConfig
 from mkdocs.plugins import event_priority
@@ -58,11 +59,40 @@ FOLDER_BLACKLIST = {
     '临时',
     'templates'
 }
+FOLDER_NAME_MAP = {}
 
 wiki_link_name_map: dict[str, File] = {}         # key 是文件名，有扩展名
 wiki_link_path_map: dict[str, FileLinkList] = {} # key 是 src_uri
 notes_sorted_by_date: list[File] = []            # 所有笔记，根据时间倒序保存
 log = logging.getLogger('mkdocs.plugins')
+
+def load_folder_name_map(config: MkDocsConfig):
+    gloabal FOLDER_NAME_MAP
+    # 如果已经加载过，直接返回
+    if FOLDER_NAME_MAP:
+        return
+
+    # 确定映射文件路径（在项目根目录）
+    project_dir = os.path.dirname(config.config_file_path)
+    json_path = os.path.join(project_dir, 'folder_names.json')
+    
+    # 尝试加载 JSON 文件
+    if os.path.exists(json_path):
+        try:
+            with open(json_path, 'r', encoding='utf-8') as f:
+                FOLDER_NAME_MAP = json.load(f)
+            log.info(f"Loaded folder name map from {json_path}")
+            return
+        except Exception as e:
+            log.error(f"Error loading JSON folder map: {e}")
+
+    # 如果找不到，使用空字典
+    log.warning("No folder name map file found, using default names")
+    FOLDER_NAME_MAP = {}
+
+def on_config(config: MkDocsConfig, **kwargs):
+    load_folder_name_map(config)
+    return config
 
 def set_file_dest_uri(f: File, value: Union[str, Callable[[str], str]]):
     f.dest_uri = value if isinstance(value, str) else value(f.dest_uri)
@@ -197,8 +227,9 @@ def on_nav(nav: Navigation, config: MkDocsConfig, files: Files):
         else:
             # Section 对应文件夹，直接用 title 即可
             key = entry.title
-            # TODO: 改变文件夹对应的title (引入JSON,将对应的值进行映射)
-            
+            # 改变文件夹对应的title
+            entry.title = map_folder_name(key)
+
         return get_str_sort_key(key)
 
     def dfs_sort(entry):
@@ -220,8 +251,17 @@ def on_nav(nav: Navigation, config: MkDocsConfig, files: Files):
         folders.sort(key=get_entry_key)
         entry.children = folders + files # 文件夹放在文件前面
 
+        # 文件夹名称映射函数（保持不变）
+    def map_folder_name(original_name: str) -> str:
+        if original_name in FOLDER_NAME_MAP:
+            return FOLDER_NAME_MAP[original_name]
+        return original_name
+    
     md_root = find_md_root(nav)
     md_root.title = 'Notes'
+
+    # 确保名称映射已加载
+    load_folder_name_map(config)
 
     # 将下面的文章重新排序
     dfs_sort(md_root)
