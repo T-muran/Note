@@ -1,4 +1,20 @@
 {
     "CS": "计算机科学",
-    "Math": "数学"
+    
+    "Algorithm": "算法",
+    "Graph-Theory":"图论",
+
+    "CG": "计算机图形学",
+
+    "Design-Patterns": "设计模式",
+    
+    "Language": "计算机语言",
+    
+    "Math": "数学",
+
+    "Advanced-Mathematics": "高等数学",
+    "Differential-Calculus": "微分学",
+    "Integral-Calculus": "积分学",
+
+    "Linear-Algebra": "线性代数"
 }
