@@ -12,9 +12,9 @@
     
     "Math": "数学",
 
-    "Advanced-Mathematics": "高等数学",
-    "Differential-Calculus": "微分学",
-    "Integral-Calculus": "积分学",
+    "Advanced Mathematics": "高等数学",
+    "Differential Calculus": "微分学",
+    "Integral Calculus": "积分学",
 
-    "Linear-Algebra": "线性代数"
+    "Linear Algebra": "线性代数"
 }
