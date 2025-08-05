@@ -67,7 +67,7 @@ notes_sorted_by_date: list[File] = []            # 所有笔记，根据时间�
 log = logging.getLogger('mkdocs.plugins')
 
 def load_folder_name_map(config: MkDocsConfig):
-    gloabal FOLDER_NAME_MAP
+    global FOLDER_NAME_MAP
     # 如果已经加载过，直接返回
     if FOLDER_NAME_MAP:
         return
