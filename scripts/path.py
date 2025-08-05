@@ -5,6 +5,7 @@ import posixpath
 import pypinyin
 import re
 import json
+import os  
 
 from mkdocs.config.defaults import MkDocsConfig
 from mkdocs.plugins import event_priority
